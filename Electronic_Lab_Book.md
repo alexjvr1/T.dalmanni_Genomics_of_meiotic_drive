@@ -1,10 +1,10 @@
 # Analyses
 
-In the spirit of open and repeatable science, we provide the electronic lab book associated with this project. This serves as: 
+This electronic lab book serves as: 
 
 1) A record of the decisions made during data processing and analysis
 
-2) A clear record of the analyses including links to data, scripts, and final figures and tables. 
+2) A clear record of the analyses including links to data, scripts, and final outputs
 
 
 ## Analyses: 
