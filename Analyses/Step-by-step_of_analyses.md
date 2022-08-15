@@ -19,13 +19,20 @@ Feel free to modify and use in tutorials or in your own analyses. I would be gra
 
 ### Data
 
+Two sets of HiFi reads were generated from pooled samples
+
 
 ### HiFiasm
 
-#### Initial run
+#### De novo assembly
+
+Each set of raw reads was submitted to HiFiasm for de novo assembly using [HiFiasm_INPUT1](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/HiFiasm_INPUT1.sh) and [HiFiasm_INPUT2](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/HiFiasm_INPUT2.sh)
 
 
 #### Checks
+
+
+
 
 ### Purge duplicates
 
