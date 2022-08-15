@@ -19,7 +19,7 @@ Feel free to modify and use in tutorials or in your own analyses. I would be gra
 
 ### Data
 
-Two sets of HiFi reads were generated from pooled samples
+Two sets of HiFi reads were generated from pooled larvae which were inbred for X (IBD) but not the autosomes. Individuals were all female, thus we expect no difference in coverage between the X chromosome and autosomes. 
 
 
 ### HiFiasm
