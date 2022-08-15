@@ -8,4 +8,4 @@ This work was funded by the Natural Environment Research Council (NERC xxx).
 
 
 
-We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of open research. This repository provides a full record of the analyses conducted in this [electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md). In addition, all scripts, final tables and figures, and links to raw data are provided. 
+We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of open research. This repository provides a detailed record of the analyses conducted in this [project wiki](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/wiki). 
