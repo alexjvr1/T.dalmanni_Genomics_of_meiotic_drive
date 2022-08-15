@@ -9,17 +9,17 @@ In the spirit of open and repeatable science, we provide the electronic lab book
 
 ## Analyses: 
 
-1. Genome assembly
+1. [Genome assembly](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#1-genome-assembly)
     
-    1a. ST genome assembly
+    [1a. ST genome assembly]()
     
-    1b. SR genome assembly
+    [1b. SR genome assembly]()
     
-2. Genome annotation
+2. [Genome annotation]()
 
-3. Mapping Structural Variants
+3. [Mapping Structural Variants]()
 
-4. Mapping repeat elements
+4. [Mapping repeat elements]()
 
 
 
