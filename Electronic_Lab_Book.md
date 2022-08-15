@@ -1,21 +1,32 @@
 # Analyses
 
-A step-by-step description of the analyses conducted as a detailed supplement to the manuscript. 
-
-In the spirit of open and repeatable science, we provide a cleaned-up version of my electronic notebook. This serves as: 
+In the spirit of open and repeatable science, we provide the electronic lab book associated with this project. This serves as: 
 
 1) A record of the decisions made during data processing and analysis
 
-2) A clear guide to rerunning analyses using the same data
-
-3) Scripts and guide to updating results as new data becomes available
-
-Feel free to modify and use in tutorials or in your own analyses. I would be grateful for an acknowledgement, but don't expect it. 
+2) A clear guide to the analyses including links to data, scripts, and final figures and tables. 
 
 
-# Genome assembly
+## Analyses: 
 
-## ST genome assembly
+1. Genome assembly
+    
+    1a. ST genome assembly
+    
+    1b. SR genome assembly
+    
+2. Genome annotation
+
+3. Mapping Structural Variants
+
+4. Mapping repeat elements
+
+
+
+
+# 1. Genome assembly
+
+## 1a. ST genome assembly
 
 ### Data
 
@@ -49,7 +60,7 @@ Each set of raw reads was submitted to HiFiasm for de novo assembly using [HiFia
 #### Blobtools
 
 
-## SR genome assembly
+## 1b. SR genome assembly
 
 
 ### Assess final genome
@@ -61,7 +72,7 @@ Each set of raw reads was submitted to HiFiasm for de novo assembly using [HiFia
 
 
 
-## Genome annotation
+## 2. Genome annotation
 
 ### Data processing
 
@@ -76,7 +87,7 @@ link to Sade's pipeline and paper
 
 
 
-# Map Structural variants
+# 3. Map Structural variants
 
 Pipeline
 
@@ -104,7 +115,7 @@ Pipeline
 Based on Ruff paper
 
 
-# Map repeat elements
+# 4. Map repeat elements
 
 ## RepeatModeler
 
