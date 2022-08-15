@@ -7,4 +7,5 @@ Authors (order to be discussed): Alexandra Jansen van Rensburg, Laura Meade, Hel
 This work was funded by the Natural Environment Research Council (NERC xxx).
 
 
-A full record of the analyses can be found in the [electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md)
+
+We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of open research. This repository provides a full record of the analyses conducted in this [electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md). In addition, all scripts, final tables and figures, and links to raw data are provided. 
