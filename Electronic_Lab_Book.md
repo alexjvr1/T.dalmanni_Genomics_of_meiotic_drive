@@ -1,6 +1,6 @@
 # Analyses
 
-This electronic lab book serves as: 
+To make our research accessible, transparent, and repeatable, we provide this electronic lab book as: 
 
 1) A record of the decisions made during data processing and analysis
 
