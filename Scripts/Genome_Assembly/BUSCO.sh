@@ -5,7 +5,7 @@
 #$ -l h_vmem=16G #enforced limit on shell memory usage
 #$ -l h_rt=20:00:00 ##wall time.
 #$ -j y  #concatenates error and output files (with prefix job1)
-#$ -t 4
+#$ -t 1-4
 #$ -l tscratch=10G
 #$ -l avx2=yes
 
