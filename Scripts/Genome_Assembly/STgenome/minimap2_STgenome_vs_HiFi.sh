@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -S /bin/bash
-#$ -N SR._minimap  ##job name
+#$ -N ST.HiFivsREF_minimap  ##job name
 #$ -l tmem=32G #RAM
 #$ -l h_vmem=32G #enforced limit on shell memory usage
 #$ -l h_rt=1:00:00 ##wall time.
