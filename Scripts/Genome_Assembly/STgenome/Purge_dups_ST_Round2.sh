@@ -21,6 +21,8 @@ cd $SGE_O_WORKDIR
 minimap2=/SAN/ugi/StalkieGenomics/software/minimap2-2.24_x64-linux/minimap2
 pbcstat=/SAN/ugi/StalkieGenomics/software/purge_dups/bin/pbcstat
 calcuts=/SAN/ugi/StalkieGenomics/software/purge_dups/bin/calcuts
+split_fa=/SAN/ugi/StalkieGenomics/software/purge_dups/bin/split_fa
+
 
 
 #Variables
@@ -43,5 +45,11 @@ done
 
 # Step 4.3: Split merged assembly by contig and self align
 
+## Split into contiges
+$split_fa $REF > $REF.split
+
+## Self-alignment
+$minimap2 -xasm5 -DP $REF.split $REF.split | gzip -c - > $REF.split.self.paf.gz
 
 
+# Step 4.4: Purge duplicates and extract purged contigs from merged assembly.
