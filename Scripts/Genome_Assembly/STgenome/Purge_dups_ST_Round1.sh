@@ -15,15 +15,15 @@ get_seqs=/SAN/ugi/StalkieGenomics/software/purge_dups/bin/get_seqs
 
 #Variables
 REF=/SAN/ugi/StalkieGenomics/STgenome/STgenome_220510.asm.p_ctg.fas
-
+SPLITREF=STgenome_220510.asm.p_ctg_split.fas
 
 ## Step1: Create a bed file of all duplicate reads
 $purge_dups -2 -T cutoffs -c PB.base.cov $REF.split.self.paf.gz > dups.bed 2> purge_dups.log
 
 
-## Step2: Edit the bed file so that the contig names appear the same between the bed and $REF files 
-
+## Step2: Edit the fas file to remove any colons from the contig names 
+sed 's/:.*//' $SPLITREF > $SPLITREF_renamed
 
 ## Step3: extract all non-duplicated reads from the original reference
-$get_seqs -e dups.bed $REF 
+$get_seqs -e dups.bed $SPLITREF 
 
