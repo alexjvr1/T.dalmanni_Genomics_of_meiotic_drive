@@ -165,8 +165,12 @@ Coverage plot:
 
 
 
+
 BUSCO scores: 
 
+[BUSCO_purged.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_purgedups_Round1.sh)
+
+[Results](): 
 
 
 
