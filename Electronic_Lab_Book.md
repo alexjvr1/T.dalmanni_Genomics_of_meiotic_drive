@@ -56,6 +56,12 @@ C:98.0%[S:65.0%,D:33.0%],F:0.4%,M:1.6%,n:3285
 Visualise the kmer distribution using [Jellyfish v.2.3.0](https://github.com/gmarcais/Jellyfish) and [GenomeScope](http://qb.cshl.edu/genomescope/)
 
 
+The peak is indistinguishable from the error. Estimated heterozygosity is ~4%, and the genome size is much larger than expected (3.1Gb vs 438.2Mb)
+
+
+
+
+
 
 ### Purge duplicates round 1
 
