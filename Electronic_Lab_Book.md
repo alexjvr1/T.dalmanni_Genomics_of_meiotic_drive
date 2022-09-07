@@ -64,13 +64,36 @@ The peak is indistinguishable from the error. Estimated heterozygosity is ~4%, a
 
 We suspect that HiFiasm hasn't purged enough duplicates. HiFiasm is run with the most stringent purging setting by default. The developers suggest [here](https://github.com/chhylp123/hifiasm/issues/70) that a combination of HiFiasm and [purge_dups](https://github.com/dfguan/purge_dups) might be necessary with high levels of duplication. 
 
-The very large genome assembly also suggests that there is a high level of duplication in the genome that was not properly purged by HiFiasm: [HiFiasm FAQ](https://hifiasm.readthedocs.io/en/latest/faq.html#why-the-size-of-primary-assembly-or-partially-phased-assembly-is-much-larger-than-the-estimated-genome-size) 
+The very large genome assembly also suggests a high level of duplication that was not properly purged: [HiFiasm FAQ](https://hifiasm.readthedocs.io/en/latest/faq.html#why-the-size-of-primary-assembly-or-partially-phased-assembly-is-much-larger-than-the-estimated-genome-size) 
 
 
 
 ### Purge duplicates round 1
 
+Follow the [pipeline](https://github.com/dfguan/purge_dups#--pipeline-guide) described by the authors
 
+Step 1a: Align PacBio reads to the primary assembly: [minimap2_STgenome_vs_HiFi.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/minimap2_STgenome_vs_HiFi.sh)
+
+Step 1b: Split the assembly into contigs and self align: [minimap2_STgenome_selfAln.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/minimap2_STgenome_selfAln.sh)
+
+
+Step 1c: Calculate cut-offs: 
+
+Based on the depth estimates from above
+```
+purge_dups/bin/calcuts PB.stat > cutoffs 2>calcults.log
+```
+
+[calcuts.log](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/Round1_calcuts.log)
+
+
+Step 1d: Inspect the automatic cut-offs: 
+
+```
+/purge_dups/scripts/hist_plot.py -c cutoffs PB.stat PB.cov.png
+```
+
+![Screen Shot 2022-09-07 at 13 43 47](https://user-images.githubusercontent.com/12142475/188881271-f66b64fa-b725-4581-a4fc-3d16ff70012d.png)
 
 
 
