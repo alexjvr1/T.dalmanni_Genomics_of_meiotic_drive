@@ -25,9 +25,9 @@ export PATH=/share/apps/genomics/sepp/bin:$PATH
 
 #Variables
 SHAREDPATH=/SAN/ugi/StalkieGenomics
-GENOME=$SHAREDPATH/STgenome/purged.fa
+GENOME=$SHAREDPATH/STgenome/FINAL_PURGEDDUPS/purged.fa
 DATABASE=$SHAREDPATH/RefGenome/busco_downloads/lineages/diptera_odb10
-OUTFILE=BUSCO_purged.fa_round1
+OUTFILE=BUSCO_purged.fa_m23u140_round1
 
 
 
