@@ -74,6 +74,7 @@ Follow the [pipeline](https://github.com/dfguan/purge_dups#--pipeline-guide) des
 
 Step 1a: Align PacBio reads to the primary assembly: [minimap2_STgenome_vs_HiFi.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/minimap2_STgenome_vs_HiFi.sh)
 
+
 Step 1b: Split the assembly into contigs and self align: [minimap2_STgenome_selfAln.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/minimap2_STgenome_selfAln.sh)
 
 
@@ -95,12 +96,91 @@ Step 1d: Inspect the automatic cut-offs:
 
 ![Screen Shot 2022-09-07 at 13 43 47](https://user-images.githubusercontent.com/12142475/188881271-f66b64fa-b725-4581-a4fc-3d16ff70012d.png)
 
+Check if the coverage is what we expect. If this is a completely homozygous genome we'd expect this primary assembly to be a haploid peak. The diploid peak (heterozygous sites) would be expected at about half the haploid coverage. 
+
+```
+zcat m64157e_210730_141553.hifi_reads.fasta.gz | grep -v ">" | awk '{x+=length($0)}END{print x}'
+12769157425
+
+zcat m64157e_211024_013127.hifi_reads.fasta.gz | grep -v ">" | awk '{x+=length($0)}END{print x}'
+```
+
+The expected coverage is: 
+```
+# Number of raw reads / expected genome size
+(12769157425+7893963766)/438000000 = 47x
+
+#Coverage for haploid genome: 47X
+#Therefore expected coverage for diploid genome: 23.5X
+```
+
+The peak is at 47X - exactly what we'd expect with a low heterozygosity haploid assembly based on our data. 
+
+
+Step 1e: Manually adjust the cut-offs: 
+
+Since we expect only a single peak, we need to adjust the cut-offs. See [here](https://github.com/dfguan/purge_dups/issues/14) for a discussion on how to choose cut-offs. 
+
+We've chosen: 
+```
+# l: lower cut-off. Everything below this coverage is removed as junk
+# m: heterozygous cut-off. 47X/2
+# u: coverage of duplications. 47X*3
+
+purge_dups/bin/calcuts -l 7 -m 23 -u 140 PB.stat > cutoffs_adjusted
+
+cat cutoffs_adjusted
+7	22	22	23	23	140
+```
+
+
+Step 2: Purge haplotigs and overlaps
+
+```
+#Runs in a few seconds
+
+purge_dups/bin/purge_dups -2 -T cutoffs_adjusted -c PB.base.cov STgenome_220510.asm.p_ctg.fas.split.self.paf.gz > dups.bed 2> purge_dups.log
+```
+
+Step 3: Retrieve the non-duplicated sequences from the primary assembly
+
+```
+#The "split" assembly has been split into contigs. 
+#These were renamed to remove the sequence length from the contig names: 
+#e.g., >ptg000001l:1-6752682 renamed to >ptg000001l
+
+purge_dups/bin/get_seqs -e dups.bed STgenome_220510.asm.p_ctg_split.fas_renamed
+```
+
+#### Validate
+
+Size of the purged genome matches the expectation (438Mb)
+```
+207M	hap.fa
+421M	purged.fa
+```
+
+
+Coverage plot: 
+
+
+
+BUSCO scores: 
+
+
+
 
 
 #### purge duplicates round 2
 
+The authors recommend concatenating the purged hap.fa and purged.fa and repeating the whole process. After running this we obtained much poorer BUSCO scores: 
+
+
+
 
 #### checks
+
+
 
 
 ### Assess final genome
