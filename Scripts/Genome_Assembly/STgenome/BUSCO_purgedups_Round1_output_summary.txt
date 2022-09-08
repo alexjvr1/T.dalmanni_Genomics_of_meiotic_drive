@@ -1,17 +1,17 @@
 # BUSCO version is: 5.2.2 
 # The lineage dataset is: diptera_odb10 (Creation date: 2020-08-05, number of genomes: 56, number of BUSCOs: 3285)
-# Summarized benchmarking in BUSCO notation for file /SAN/ugi/StalkieGenomics/STgenome/purged.fa
+# Summarized benchmarking in BUSCO notation for file /SAN/ugi/StalkieGenomics/STgenome/FINAL_PURGEDDUPS/PURGE_l5m23u140/purged.fa
 # BUSCO was run in mode: genome
 # Gene predictor used: metaeuk
 
 	***** Results: *****
 
-	C:96.8%[S:95.0%,D:1.8%],F:0.4%,M:2.8%,n:3285	   
-	3181	Complete BUSCOs (C)			   
+	C:96.9%[S:95.0%,D:1.9%],F:0.4%,M:2.7%,n:3285	   
+	3182	Complete BUSCOs (C)			   
 	3121	Complete and single-copy BUSCOs (S)	   
-	60	Complete and duplicated BUSCOs (D)	   
+	61	Complete and duplicated BUSCOs (D)	   
 	14	Fragmented BUSCOs (F)			   
-	90	Missing BUSCOs (M)			   
+	89	Missing BUSCOs (M)			   
 	3285	Total BUSCO groups searched		   
 
 Dependencies and versions:
