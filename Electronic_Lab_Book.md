@@ -137,6 +137,7 @@ cat cutoffs_adjusted
 We also tested: 
 
 l=7, m=23, u=140 [BUSCO](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_ST_HiFiasm_purged_l7m23u140.txt)
+
 l=7, m=23, u=70 [BUSCO](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_ST_HiFiasm_purged_l7m23u70.txt)
 
 But they had slightly worse BUSCO scores. 
@@ -187,6 +188,8 @@ BUSCO scores:
 
 The authors recommend concatenating the purged hap.fa and purged.fa and repeating the whole process. After running this we obtained much poorer BUSCO scores: 
 
+
+[BUSCO]()
 
 
 
