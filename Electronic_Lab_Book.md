@@ -130,8 +130,16 @@ We've chosen:
 purge_dups/bin/calcuts -l 7 -m 23 -u 140 PB.stat > cutoffs_adjusted
 
 cat cutoffs_adjusted
-7	22	22	23	23	140
+5	22	22	23	23	140
 ```
+
+
+We also tested: 
+
+l=7, m=23, u=140 [BUSCO](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_ST_HiFiasm_purged_l7m23u140.txt)
+l=7, m=23, u=70 [BUSCO](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_ST_HiFiasm_purged_l7m23u70.txt)
+
+But they had slightly worse BUSCO scores. 
 
 
 Step 2: Purge haplotigs and overlaps
@@ -156,8 +164,8 @@ purge_dups/bin/get_seqs -e dups.bed STgenome_220510.asm.p_ctg_split.fas_renamed
 
 Size of the purged genome matches the expectation (438Mb)
 ```
-207M	hap.fa
-421M	purged.fa
+198M	hap.fa
+431M	purged.fa
 ```
 
 
@@ -170,7 +178,7 @@ BUSCO scores:
 
 [BUSCO_purged.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_purgedups_Round1.sh)
 
-[Results](): 
+[Results](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_purgedups_Round1_output_summary.txt): 
 
 
 
