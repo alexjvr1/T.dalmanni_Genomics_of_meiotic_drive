@@ -171,6 +171,7 @@ Size of the purged genome matches the expectation (438Mb)
 
 
 Coverage plot: 
+<img width="832" alt="Screen Shot 2022-09-08 at 11 21 22" src="https://user-images.githubusercontent.com/12142475/189098587-478d34f0-9a8a-4648-a574-0f115310833b.png">
 
 
 
@@ -179,8 +180,12 @@ BUSCO scores:
 
 [BUSCO_purged.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_purgedups_Round1.sh)
 
+C:96.9%[S:95%;D:1.9%]
+
 [Results](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_purgedups_Round1_output_summary.txt): 
 
+
+Wilkinson genome: C:96.7%[S:95%;D:2.0%]
 
 
 
