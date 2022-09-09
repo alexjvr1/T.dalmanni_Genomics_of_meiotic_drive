@@ -235,6 +235,13 @@ For an initial look at the genome assemblies, we used [D-genies](https://dgenies
 
 
 
+It looks like at least one of our large contigs in the ST genome has an error as it shows an inversion on autosome 2 in both comparisons. 
+
+
+### Check for errors in contigs
+
+
+
 
 ### Scaffold 
 
