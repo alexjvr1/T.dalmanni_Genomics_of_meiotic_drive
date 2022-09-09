@@ -207,17 +207,31 @@ Wilkinson genome: C:96.7%[S:95%;D:2.0%]
 
 #### purge duplicates round 2
 
-The authors recommend concatenating the purged hap.fa and purged.fa and repeating the whole process. After running this we obtained much poorer BUSCO scores: 
+The authors recommend concatenating the purged hap.fa and alt assembly and repeating the whole process. After running this we obtained much poorer BUSCO scores: 
 
 
-Size: 
-```
+Initial depth distribution: 
 
-```
+<img width="883" alt="Screen Shot 2022-09-09 at 16 31 21" src="https://user-images.githubusercontent.com/12142475/189387428-f94b1756-82c2-443c-a904-733ac8b30b4b.png">
 
 
-[BUSCO]()
+Based on the low depth reads in these two fasta files, we decided not to pursue these data further. 
 
+
+### Compare draft genomes
+
+For an initial look at the genome assemblies, we used [D-genies](https://dgenies.toulouse.inra.fr). This web application uses minimap2 to quickly align two genomes (2-6 minutes for our assemblies)
+
+1. Wilkinson ST genome vs our ST genome
+
+![Screen Shot 2022-09-09 at 16 36 44](https://user-images.githubusercontent.com/12142475/189388515-3b2f9c16-9cd5-47b8-9542-2e12ee3cdc22.png)
+
+
+
+
+2. Our ST draft vs our SR draft
+
+![Screen Shot 2022-09-09 at 16 37 36](https://user-images.githubusercontent.com/12142475/189388554-4032a3cf-bfcf-4dcd-9396-b76c0b8a984a.png)
 
 
 
