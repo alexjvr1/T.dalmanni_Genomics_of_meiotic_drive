@@ -110,11 +110,11 @@ The expected coverage is:
 # Number of raw reads / expected genome size
 (12769157425+7893963766)/438000000 = 47x
 
-#Coverage for haploid genome: 47X
-#Therefore expected coverage for diploid genome: 23.5X
+#Coverage for homozygote sites in genome: 47X
+#Therefore expected coverage for heterozygote sites: 23.5X
 ```
 
-The peak is at 47X - exactly what we'd expect with a low heterozygosity haploid assembly based on our data. 
+The peak is at 47X - exactly what we'd expect with a low heterozygosity (i.e. homozygous) diploid assembly based on our data. 
 
 
 Step 1e: Manually adjust the cut-offs: 
