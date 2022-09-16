@@ -258,6 +258,8 @@ Map Hi-C reads to reference using the [Arima Mapping pipeline](https://github.co
 
 [Map_HiC.sh]()
 
+Mapping runs for ~24 hours using the resources in the script. 
+
 [Process_mapped_HiC.sh]()
 
 
