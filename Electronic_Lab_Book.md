@@ -17,9 +17,11 @@ To make our research accessible, transparent, and repeatable, we provide this el
     
 2. [Genome annotation](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#2-genome-annotation)
 
-3. [Mapping Structural Variants](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3-map-structural-variants)
+3. [Short Reads]()
 
-4. [Mapping repeat elements](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#4-map-repeat-elements)
+4. [Mapping Structural Variants](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3-map-structural-variants)
+
+5. [Mapping repeat elements](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#4-map-repeat-elements)
 
 
 
@@ -309,8 +311,11 @@ link to Sade's pipeline and paper
 
 
 
+# 3. Short Reads
 
-# 3. Map Structural variants
+
+
+# 4. Map Structural variants
 
 Pipeline
 
@@ -338,7 +343,7 @@ Pipeline
 Based on Ruff paper
 
 
-# 4. Map repeat elements
+# 5. Map repeat elements
 
 ## RepeatModeler
 
