@@ -72,6 +72,11 @@ The very large genome assembly also suggests a high level of duplication that wa
 
 Follow the [pipeline](https://github.com/dfguan/purge_dups#--pipeline-guide) described by the authors
 
+Step 0: Convert gfa (default HiFiasm output) to fasta
+```
+awk '/^S/{print ">"$2;print $3}' test.p_ctg.gfa > test.p_ctg.fa
+```
+
 Step 1a: Align PacBio reads to the primary assembly: [minimap2_STgenome_vs_HiFi.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/minimap2_STgenome_vs_HiFi.sh)
 
 
