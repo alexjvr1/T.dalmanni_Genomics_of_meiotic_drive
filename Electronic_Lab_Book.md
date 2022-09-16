@@ -17,7 +17,7 @@ To make our research accessible, transparent, and repeatable, we provide this el
     
 2. [Genome annotation](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#2-genome-annotation)
 
-3. [Short Reads]()
+3. [Short Reads](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3-short-reads)
 
 4. [Mapping Structural Variants](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3-map-structural-variants)
 
@@ -312,6 +312,20 @@ link to Sade's pipeline and paper
 
 
 # 3. Short Reads
+
+Short read whole genome sequence data was produced for 100 individuals. These data are available on the Short Read Archive (SRA) on NCBI: [LINK]()
+
+
+
+## 3a. Assess raw data
+
+
+## 3b. Map to ST and SR genomes
+
+
+## 3c. Assess mapping
+
+samtools flagstat
 
 
 
