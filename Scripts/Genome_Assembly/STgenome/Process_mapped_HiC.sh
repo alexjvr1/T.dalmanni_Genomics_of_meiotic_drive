@@ -23,6 +23,11 @@ export LD_LIBRARY_PATH=/share/apps/java/lib:$LD_LIBRARY_PATH
 export PATH=/share/apps/perl-5.30.0/bin/perl5.30.0:$PATH
 
 
+#Set up	scratch	space
+mkdir -p /scratch0/$USERNAME/$JOB_ID
+TMP_DIR=/scratch0/$USERNAME/$JOB_ID
+
+
 #Variables
 SRA=SRR12620697
 LABEL=STassembly
@@ -34,8 +39,6 @@ REP_DIR=/SAN/ugi/StalkieGenomics/STgenome/FINAL_PURGEDDUPS/PURGE_l5m23u140/SCAFF
 REP_LABEL=$LABEL\_rep1
 MAPQ_FILTER=10
 
-
-**TMP_DIR
 
 echo "Processing of reads mapped using Map_HiC.sh"
 
