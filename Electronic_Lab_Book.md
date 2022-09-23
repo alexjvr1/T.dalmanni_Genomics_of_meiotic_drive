@@ -298,7 +298,10 @@ Scaffold with [YAHS](https://github.com/c-zhou/yahs)
 
 ### Data processing
 
-Isoseq
+Isoseq data was generated from pools 
+
+
+
 
 ### Pipeline
 
