@@ -269,9 +269,11 @@ Mapping runs for ~24 hours using the resources in the script.
 
 Scaffold with [YAHS](https://github.com/c-zhou/yahs)
 
-
-
-
+```
+SHAREDDIR=/SAN/ugi/StalkieGenomics
+STGENOME=
+/SAN/ugi/StalkieGenomics/software/yahs/yahs ../STpurged.fa ../BAM/DEDUP/STassembly_rep1.bam
+```
 
 ### Assess final genome
 
