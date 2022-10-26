@@ -267,13 +267,21 @@ Mapping runs for ~24 hours using the resources in the script.
 
 #### Step 2: Scaffold
 
+##### *Step1*
+
 Scaffold with [YAHS](https://github.com/c-zhou/yahs)
 
-```
-SHAREDDIR=/SAN/ugi/StalkieGenomics
-STGENOME=
-/SAN/ugi/StalkieGenomics/software/yahs/yahs ../STpurged.fa ../BAM/DEDUP/STassembly_rep1.bam
-```
+Use the script [Yahs_Step1.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/Yahs_Step1.sh)
+
+This runs in 7mins
+
+Output log found [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/Yahs_Step1.log) 
+
+
+##### *Step2*
+
+
+
 
 ### Assess final genome
 
