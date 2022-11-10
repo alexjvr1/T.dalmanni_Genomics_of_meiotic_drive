@@ -390,12 +390,43 @@ C:97.0%[S:95.2%,D:1.8%],F:0.4%,M:2.6%,n:3285
 ## 1b. SR genome assembly
 
 
+*Details to be obtained from Helen*
+
+
 ### Assess final genome
+
+#### Size and fragmentation
+
+3 Chromosomes (400 Mb) + 1504 unplaced scaffolds (24 Mb)
+
+
+#### BUSCO
+
+Chromosomes only! 
+
+***** Results: *****
+
+	C:89.6%[S:88.8%,D:0.8%],F:4.0%,M:6.4%,n:3285	   
+	
+	2944	Complete BUSCOs (C)			   
+	
+	2917	Complete and single-copy BUSCOs (S)	   
+	
+	27	Complete and duplicated BUSCOs (D)	   
+	
+	130	Fragmented BUSCOs (F)			   
+	
+	211	Missing BUSCOs (M)			   
+	
+	3285	Total BUSCO groups searched
+
+
 
 #### Checks
 
+We checked to see if we could rescue any of the unplaced contigs based on alignment with our newly assembled ST_FINAL.fa
 
-
+Alignment with minimap showed now obvious positions within the chromosomes for any of the unplaced contigs, thus we left the SRgenome as is. 
 
 
 
