@@ -283,12 +283,81 @@ This runs in 7mins
 Output log found [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/Yahs_Step1.log) 
 
 
+
+
 ##### *Step2*
 
+Create a contact map using [juicer-tools](https://github.com/aidenlab/juicer/wiki/Juicer-Tools-Quick-Start). 
+
+Download the jar file [here](https://github.com/aidenlab/juicer/wiki/Download)
+
+*NB* This is different from juicer provided with yahs, and needs to be installed independently. 
+
+*NB* We've used v. 1.9.9. Versions 2.xx are unstable with the desktop version of Juicebox. 
+
+
+The following runs in a few minutes:
+```
+(java -jar -Xmx32G juicer_tools.1.9.9_jcuda.0.8.jar pre alignments_sorted.txt out.hic.part scaffolds_final.chrom.sizes) && (mv out.hic.part out.hic)
+```
+
+1. alignments_sorted.txt = sorted alignment file created in first part of the script
+
+2. out.hic.part = temporary outfile to be moved to out.hic in second part of the script
+
+3. scaffolds_final.chrom.sizes = file with two columns: scaffold name and scaffold size. These can be found from the .fai index file for the genome. 
+
+
+##### *Step 3*
+
+Create .hic contact map file that can be visualised in Juicebox
+
+```
+juicer pre -a -o out_JBAT hic-to-contigs.bin scaffolds_final.agp contigs.fa.fai >out_JBAT.log 2>&1
+
+```
+*NB* This uses juicer from Yahs. 
+
+And create .hic file:
+```
+(java -jar -Xmx32G juicer_tools.1.9.9_jcuda.0.8.jar pre out_JBAT.txt out_JBAT.hic.part <(cat out_JBAT.log  | grep PRE_C_SIZE | awk '{print $2" "$3}')) && (mv out_JBAT.hic.part out_JBAT.hic)
+```
+
+
+##### *Step4*
+
+Visualise the heatmap in Juicebox Desktop by importing the .hic and .assembly files generated in the previous step. 
+
+See [here](https://www.youtube.com/watch?v=Nj7RhQZHM18) for a video on how to edit the scaffold map in Juicebox. 
+
+Save the edited version as your final genome. 
+
+Our initial heatmap showed one large chromosome and several small unplaced scaffolds. We identified the three chromosomes. Some further changes could be made to Chr 1, but given the ambiguity of the assembly at this location (~center of Chr1) we made no changes. 
+
+The problematic inversion on Chr 2 is no longer apparent. 
+
+The edited assembly will be saved as filename.review.assembly
+
+
+##### *Step5*
+
+Convert Juicebox output to fasta
+
+Use the yahs juicer function to convert the modified assembly to the final fasta. 
+```
+juicer post -o out_JBAT out_JBAT.review.assembly out_JBAT.liftover.agp contigs.fa
+
+```
+
+Final ST genome saved as ST_FINAL.fa
+
+*Both Yahs and Juicer developers are very responsive on their respective google groups/github pages.* 
 
 
 
 ### Assess final genome
+
+
 
 
 
