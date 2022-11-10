@@ -357,9 +357,30 @@ Final ST genome saved as ST_FINAL.fa
 
 ### Assess final genome
 
+#### Size & fragmentedness
+
+3 Chromosomes (394 Mb) + 980 unplaced scaffolds (64 Mb)
+
+#### Completeness
+
+BUSCO [Script](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/STgenome/BUSCO_POMST_FULL.sh)
 
 
-
+C:97.0%[S:95.2%,D:1.8%],F:0.4%,M:2.6%,n:3285	   
+	
+    3184	Complete BUSCOs (C)			   
+	
+    3126	Complete and single-copy BUSCOs (S)	   
+	
+    58	Complete and duplicated BUSCOs (D)	   
+	
+    14	Fragmented BUSCOs (F)			   
+	
+    87	Missing BUSCOs (M)			   
+	
+    3285	Total BUSCO groups searched	
+    
+    
 
 #### Blobtools
 
