@@ -430,10 +430,27 @@ Short read whole genome sequence data was produced for 100 individuals. These da
 
 ## 3b. Map to ST and SR genomes
 
+105 samples (100 WGS + 5 negative controls) were mapped to ST and SR respectively using the following pipeline: 
+
+1. Add Read group information: [02b.0_AddRGs_ARRAY1.sh]()
+
+2. Mark duplicates: [02b.1_MarkDups_ARRAY1.sh]()
+
+3. Local realignment: [02b.2_LocalRealignment_ARRAY1.sh]()
+
+4. Check final bams: [02b.3_ValidateBamFile_ARRAY1.sh]()
+
+
 
 ## 3c. Assess mapping
 
 samtools flagstat
+
+
+## 3d. PCA to assign individuals to ST/SR
+
+
+How many were incorrectly assigned before sequencing? 
 
 
 
@@ -449,8 +466,6 @@ Pipeline
 
 ## Filtering
 
-
-## Machine learning approaches
 
 
 ## Re-sequencing
