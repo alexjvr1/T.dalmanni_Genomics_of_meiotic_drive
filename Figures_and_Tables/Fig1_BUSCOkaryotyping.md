@@ -129,11 +129,14 @@ Plot
 ```
 library(ggplot2)
 
+#Tdal X only
+pdf("TdalSR_Dmel_ST_BUSCO_karyotype.pdf")
 ggplot(TdelSR_Dmel_ST_joined, aes(x=Species, y=RescaledPos))+geom_point()+geom_line(aes(group=Buscoid, colour=Sequence), alpha=0.4)
+dev.off()
 
 #Tdal X only
 pdf("Tdal_BUSCO_ChrXaln.pdf")
-ggplot(Tdel_joined[which(Tdel_joined$Sequence=="ChrX"),], aes(x=Species, y=GeneStart))+geom_point()+geom_line(aes(group=Buscoid, colour=Sequence), alpha=0.4)
+ggplot(TdelSR_ST_joined[which(TdelSR_ST_joined$Sequence=="ChrX"),], aes(x=Species, y=RescaledPos))+geom_point()+geom_line(aes(group=Buscoid, colour=Sequence), alpha=0.4)
 dev.off()
 ```
 
