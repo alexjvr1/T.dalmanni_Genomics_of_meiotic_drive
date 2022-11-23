@@ -437,12 +437,14 @@ From Meade *et al.* 2019
 
 ![alt_txt][Fig1]
 
-[Fig1]:
+[Fig1]:https://user-images.githubusercontent.com/12142475/203520468-fe1b13ed-8b0c-4627-9c93-98bc79f71d0c.png
 
+
+And the frequency with which the large and small alleles are found in each morph:
 
 ![alt_txt][Fig2]
 
-[Fig2]:
+[Fig2]:https://user-images.githubusercontent.com/12142475/203520479-9b87143c-2615-4e0d-86d7-39d4e584a8db.png
 
 
 
