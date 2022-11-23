@@ -429,6 +429,22 @@ We checked to see if we could rescue any of the unplaced contigs based on alignm
 Alignment with minimap showed now obvious positions within the chromosomes for any of the unplaced contigs, thus we left the SRgenome as is. 
 
 
+#### Location of diagnostic primers
+
+There are four sets of primers that can be used to distinguish SR and ST. 
+
+From Meade *et al.* 2019
+
+![alt_txt][Fig1]
+
+[Fig1]:
+
+
+![alt_txt][Fig2]
+
+[Fig2]:
+
+
 
 ## 2. Genome annotation
 
