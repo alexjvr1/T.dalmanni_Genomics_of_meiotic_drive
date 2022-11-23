@@ -1,3 +1,4 @@
+```
 8 reads; of these:
   8 (100.00%) were unpaired; of these:
     0 (0.00%) aligned 0 times
