@@ -462,8 +462,9 @@ See bowtie2 SR results [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of
 
 Final positions on each reference genome
 
-|:-:|:-:|:-:|:-:|:-:|
+
 |Genome|Primer|F|R|length|
+|:-:|:-:|:-:|:-:|:-:|
 |ST|m395|50590890|50591072|182|
 |ST|comp162710|81244488|81244219|269|
 |ST|cnv395|50554915|50554574|341|
