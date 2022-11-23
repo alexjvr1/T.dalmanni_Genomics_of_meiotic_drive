@@ -460,8 +460,18 @@ See bowtie2 ST results [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of
 See bowtie2 SR results [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/bowtie2_SR_diagnosticPrimers.md)
 
 
+Final positions on each reference genome
 
-
+|:-:|:-:|:-:|:-:|:-:|
+|Genome|Primer|F|R|length|
+|ST|m395|50590890|50591072|182|
+|ST|comp162710|81244488|81244219|269|
+|ST|cnv395|50554915|50554574|341|
+|ST|cnv125|84697274|not mapped|N/A|
+|SR|m395|50140221|50139999|222|
+|SR|comp162710|35368864|35368681|183|
+|SR|cnv395|50174607|50174918|311|
+|SR|cnv125|38852130|38852017|113|
 
 ## 2. Genome annotation
 
