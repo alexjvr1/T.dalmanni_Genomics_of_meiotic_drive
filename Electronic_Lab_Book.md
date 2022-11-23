@@ -447,6 +447,21 @@ And the frequency with which the large and small alleles are found in each morph
 [Fig2]:https://user-images.githubusercontent.com/12142475/203520479-9b87143c-2615-4e0d-86d7-39d4e584a8db.png
 
 
+We identified the location of the four diagnostic primers using bowtie2: 
+```
+#diagnostic_primers.fa is a fasta file containing primer sequences
+bowtie2 -x SR_FINAL -f diagnostic_primers.fa
+bowtie2 -x ST_FINAL -f diagnostic_primers.fa
+```
+
+
+See bowtie2 ST results [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/bowtie2_ST_diagnosticPrimers.md)
+
+See bowtie2 SR results [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/bowtie2_SR_diagnosticPrimers.md)
+
+
+
+
 
 ## 2. Genome annotation
 
