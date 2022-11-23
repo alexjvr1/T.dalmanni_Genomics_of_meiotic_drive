@@ -449,7 +449,6 @@ link to Sade's pipeline and paper
 
 
 
-
 # 3. Short Reads
 
 Short read whole genome sequence data was produced for 100 individuals. These data are available on the Short Read Archive (SRA) on NCBI: [LINK]()
