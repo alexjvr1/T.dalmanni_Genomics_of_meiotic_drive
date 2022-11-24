@@ -480,6 +480,33 @@ Final positions on each reference genome
 
 Isoseq data was generated from pools 
 
+Initially, the isoseq3 pipeline was run with default settings via the University of Liverpool Sequencing facility up to the final polishing step. 
+
+Install isoseq3 to run the collapse step. This was previously run by Liverpool using the Wilkinson v2 genome, but we want to rerun the step using our genomes. 
+```
+## Package Plan ##
+
+  environment location: /home/ajansen/.conda/envs/btk_env/bin/Miniconda3
+
+  added / updated specs:
+    - isoseq3
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2022.10.11 |       h06a4308_0         124 KB
+    certifi-2022.9.24          |   py39h06a4308_0         154 KB
+    conda-22.9.0               |   py39h06a4308_0         884 KB
+    isoseq3-3.8.1              |       h9ee0642_0         1.6 MB  bioconda
+    openssl-1.1.1s             |       h7f8727e_0         3.6 MB
+    toolz-0.12.0               |   py39h06a4308_0         105 KB
+    ------------------------------------------------------------
+                                           Total:         6.4 MB
+```
+
+
 
 
 
