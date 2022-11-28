@@ -482,6 +482,12 @@ Isoseq data was generated from pools
 
 Initially, the isoseq3 pipeline was run with default settings via the University of Liverpool Sequencing facility up to the final polishing step. 
 
+The data received from Liverpool: 
+```
+
+```
+
+
 Install isoseq3 to run the collapse step. This was previously run by Liverpool using the Wilkinson v2 genome, but we want to rerun the step using our genomes. 
 ```
 ## Package Plan ##
