@@ -489,6 +489,8 @@ The data received from Liverpool:
 
 
 Install isoseq3 to run the collapse step. This was previously run by Liverpool using the Wilkinson v2 genome, but we want to rerun the step using our genomes. 
+
+See here for more information on [isoseq3 collapse](https://isoseq.how/classification/isoseq-collapse.html) 
 ```
 ## Package Plan ##
 
@@ -512,6 +514,36 @@ The following packages will be downloaded:
                                            Total:         6.4 MB
 ```
 
+
+Run the following step for Sample1_SR and Sample2_ST - each collapsing by mapping to the correct draft genome assembly: 
+
+```
+#Genome assemblies to use
+/SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/SR_FINAL.fasta
+/SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/ST_FINAL.fa
+
+
+#Map the reads using pbmm2
+
+pbmm2 align --preset ISOSEQ --sort <input.bam> <ref.fa> <mapped.bam>
+
+##SR
+pbmm2 align --preset ISOSEQ --sort Sample1.polished.hq.bam /SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/SR_FINAL.fasta SR_isoseq_pbmm2mapped_to_POMSR.bam
+
+##ST
+pbmm2 align --preset ISOSEQ --sort Sample2.polished.hq.bam /SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/ST_FINAL.fa ST_isoseq_pbmm2mapped_to_POMST.bam
+
+
+#Collapse the reads
+
+isoseq3 collapse <mapped.bam> <collapse.gff>
+
+##SR
+isoseq3 collapse SR_isoseq_pbmm2mapped_to_POMSR.bam SR_isoseq_pbmm2mapped_to_POMSR_collapse.gff
+
+##ST
+isoseq3 collapse ST_isoseq_pbmm2mapped_to_POMST.bam ST_isoseq_pbmm2mapped_to_POMST_collapse.gff
+```
 
 
 
