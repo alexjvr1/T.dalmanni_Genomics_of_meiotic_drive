@@ -576,10 +576,14 @@ A big improvement, even on my previous attempt to run tama collapse on the isose
 
 See script and setup here: [BLASTn_IsoSeq.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BLASTn_IsoSeq.md) for SR
 
-And here: [BLASTn_IsoSeq_ST.sh]() for ST
+And here: [BLASTn_IsoSeq_ST.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BLASTn_IsoSeq_ST.md) for ST
 
 We ran into a memory mapping error when submitting to queue, but this runs well in the interactive node. Request more time for the interactive
 node to make sure it runs to completion. 
+
+It takes ~3hours using qrsh -l tmem=5G, h_vmem=5G, h_rt=3600
+
+Started 15:17
 
 
 
