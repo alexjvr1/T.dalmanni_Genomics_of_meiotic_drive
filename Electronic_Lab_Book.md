@@ -474,6 +474,7 @@ Final positions on each reference genome
 |SR|cnv395|50174607|50174918|311|
 |SR|cnv125|38852130|38852017|113|
 
+
 ## 2. Genome annotation
 
 ### Data processing
@@ -482,9 +483,10 @@ Isoseq data was generated from pools
 
 Initially, the isoseq3 pipeline was run with default settings via the University of Liverpool Sequencing facility up to the final polishing step. 
 
-The data received from Liverpool: 
+The data received from Liverpool that we will use. These were created using the isoseq3 pipeline to the step just before collapsing: 
 ```
-
+Sample1.polished.hq.bam
+Sample2.polished.hq.bam
 ```
 
 
@@ -545,7 +547,43 @@ isoseq3 collapse SR_isoseq_pbmm2mapped_to_POMSR.bam SR_isoseq_pbmm2mapped_to_POM
 isoseq3 collapse ST_isoseq_pbmm2mapped_to_POMST.bam ST_isoseq_pbmm2mapped_to_POMST_collapse.gff
 ```
 
+We now have reads that are collapsed according to where they map on the reference genome. Has this reduced the total transcripts?:
 
+```
+#Previous collapsed fasta based on mapping to the Wilkinson genome: 85645
+grep ">" SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta |wc -l
+60208
+
+#Previous collapsed fasta based on mapping to the Wilkinson genome: 113461
+grep ">" ST_isoseq_pbmm2mapped_to_POMST_collapse.fasta |wc -l
+71438
+```
+
+A big improvement, even on my previous attempt to run tama collapse on the isoseq3, cd-hit-est collapsed files. Thus the correct genome makes a big difference. 
+
+
+##### Next things we can do: 
+
+1. BLAST to Diptera and remove all non dipteran sequences. 
+
+2. cd-est collapse (used by Liverpool)
+
+3. Tama collapse
+
+
+
+###### 1. BLASTn to Diptera
+
+See script and setup here: [BLASTn_IsoSeq.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BLASTn_IsoSeq.md) for SR
+
+And here: [BLASTn_IsoSeq_ST.sh]() for ST
+
+We ran into a memory mapping error when submitting to queue, but this runs well in the interactive node. Request more time for the interactive
+node to make sure it runs to completion. 
+
+
+
+###### 2. Tama collapse
 
 
 ### Pipeline
