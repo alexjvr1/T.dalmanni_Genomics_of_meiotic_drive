@@ -19,7 +19,7 @@ export PATH=/share/apps/genomics/blast-2.10.0+/bin:$PATH
 SHAREDPATH=/SAN/ugi/StalkieGenomics/Blobtools_STgenome
 GENOME=$SHAREDPATH/SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta
 NT=$SHAREDPATH/ncbi_nt/nt
-OUTFILE=ST_isoseq_BLAST
+OUTFILE=SR_isoseq_BLAST
 
 
 
