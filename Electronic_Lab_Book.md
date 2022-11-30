@@ -572,7 +572,7 @@ A big improvement, even on my previous attempt to run tama collapse on the isose
 
 
 
-###### 1. BLASTn to Diptera
+#### 1. BLASTn to Diptera
 
 See script and setup here: [BLASTn_IsoSeq.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BLASTn_IsoSeq.md) for SR
 
@@ -586,6 +586,182 @@ It takes ~3hours using qrsh -l tmem=5G, h_vmem=5G, h_rt=3600
 Started 15:17
 
 
+Process the output from BLASTn to identify the transcripts that should be removed from the fasta file: 
+```
+#How many transcripts are we starting with? 
+#From above
+#SR = 60208
+
+#The blastn output: 
+head SR_isoseq_BLAST 
+PB.1.1|PB.1.1:88017-90118(-)|transcript_73383	139649	1677	PB.1.1|PB.1.1:88017-90118(-)|transcript_73383	XM_038084718.1	100.000	908	0	0	2	909	14	921	0.0
+PB.1.2|PB.1.2:88124-90118(-)|transcript_76103	139649	1677	PB.1.2|PB.1.2:88124-90118(-)|transcript_76103	XM_038084718.1	100.000	908	0	0	2	909	14	921	0.0
+#Col 6 shows the proportion match to a sequence in the diptera database. 
+#Let's see how much variance there is in the matches: 
+awk '{a[i++]=$6;} END {print a[int(i/2)];}' SR_isoseq_BLAST
+99.225
+
+#To see the lowest values:
+awk '{print $6}'  SR_isoseq_BLAST |sort |tail
+99.988
+99.988
+99.988
+99.988
+99.988
+99.988
+99.988
+99.988
+99.988
+99.989
+
+#Similarly the e-values are all really low: 
+awk '{print $14}'  SR_isoseq_BLAST |sort |tail
+9.99e-32
+9.99e-32
+9.99e-36
+9.99e-60
+9.99e-65
+9.99e-72
+9.99e-97
+9.99e-97
+9.99e-97
+9.99e-97
+(base) awk '{print $14}'  SR_isoseq_BLAST |sort |head
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+
+#So we're happy to keep all these transcripts. Let's find a non-redundant set of their names: 
+awk '{print $1}' SR_isoseq_BLAST |sort |uniq > SR_BLAST_uniq
+wc -l SR_BLAST_uniq
+58369 SR_BLAST_uniq
+
+#So that's 1839 transcripts that don't blast to diptera. Or about 3% of our isoseq dataset
+
+#Let's intersect these names with the names from the isoseq fasta file, and find the transcript names that need to be removed. 
+grep ">" SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta | awk -F ">" '{print $2}' |sort |uniq > SR_fasta_uniq
+#Check that this is the expected length (see above for the number of transcripts in the isoseq fasta)
+wc -l SR_fasta_uniq 
+60208 SR_fasta_uniq
+
+#Intersect and write all lines that appear in SR_allTranscripts_isoseqfasta but not in SR_allBLASTtranscripts_uniq
+#Check that the files are sorted (as above)
+#Write the transcript names in the fasta file that isn't in the BLAST file
+diff SR_fasta_uniq SR_BLAST_uniq |grep "<" |sed 's:<\ ::g' > diff_fasta_BLAST_SR 
+wc -l diff_fasta_BLAST_SR 
+1839 diff_fasta_BLAST_SR
+
+#Because we want to extract these headers + the sequence following the name, it's easier to work with the list of transcripts to keep.
+#Find lines in common between files using comm. -1 suppresses lines unique to file 1, and -2 for file 2
+comm -12 SR_BLAST_uniq SR_fasta_uniq > shared_BLAST_fasta_SR
+wc -l shared_BLAST_fasta_SR 
+58369 shared_BLAST_fasta_SR
+
+#Extract sequences from the fasta file: 
+grep -A 1 -f shared_BLAST_fasta_SR SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta > SR_isoseq_pbmm2mapped_to_POMSR_collapse_diptera.fasta
+
+#This writes some lines "--" at the end of each extracted transcript. Remove these: 
+sed -i '/--/d' SR_isoseq_pbmm2mapped_to_POMSR_collapse_diptera.fasta
+
+```
+
+And do the same for ST
+
+```
+#How many transcripts are we starting with? 
+#From above
+#ST=71438
+
+#The blastn output: 
+head SR_isoseq_BLAST 
+PB.1.1|PB.1.1:65228-347364(+)|transcript_64308	139649	2375	PB.1.1|PB.1.1:65228-347364(+)|transcript_64308	XM_038072565.1	99.922	1289	1	0	461	1749	1	1289	0.0
+PB.1.1|PB.1.1:65228-347364(+)|transcript_64308	139649	977	PB.1.1|PB.1.1:65228-347364(+)|transcript_64308	XM_038075142.1	99.812	532	1	0	1748	2279	319	850	0.0
+PB.1.2|PB.1.2:67495-191233(+)|transcript_94016	139649	2069	PB.1.2|PB.1.2:67495-191233(+)|transcript_94016	XM_038072565.1	100.000	1120	0	0	31	1150	1	1120	0.0
+PB.1.2|PB.1.2:67495-191233(+)|transcript_94016	139649	994	PB.1.2|PB.1.2:67495-191233(+)|transcript_94016	XM_038075142.1	99.275	552	1	3	1376	1927	319	867	0.0
+
+
+#Col 6 shows the proportion match to a sequence in the diptera database. 
+#Let's see how much variance there is in the matches: 
+awk '{a[i++]=$6;} END {print a[int(i/2)];}' ST_isoseq_BLAST
+99.377
+
+#To see the lowest values:
+awk '{print $6}'  ST_isoseq_BLAST |sort |tail
+99.987
+99.987
+99.987
+99.987
+99.987
+99.987
+99.987
+99.987
+99.988
+99.989
+
+#Similarly the e-values are all really low: 
+awk '{print $14}'  ST_isoseq_BLAST |sort |tail
+9.99e-60
+9.99e-66
+9.99e-67
+9.99e-72
+9.99e-72
+9.99e-72
+9.99e-75
+9.99e-93
+9.99e-99
+9.99e-99
+(base) awk '{print $14}'  ST_isoseq_BLAST |sort |head
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+
+#So we're happy to keep all these transcripts. Let's find a non-redundant set of their names: 
+awk '{print $1}' ST_isoseq_BLAST |sort |uniq > ST_BLAST_uniq
+wc -l ST_BLAST_uniq
+68744 ST_BLAST_uniq
+
+#So that's 2694 transcripts that don't blast to diptera. Or about 3.8% of our isoseq dataset
+
+#Let's intersect these names with the names from the isoseq fasta file, and find the transcript names that need to be removed. 
+grep ">" ST_isoseq_pbmm2mapped_to_POMST_collapse.fasta | awk -F ">" '{print $2}' |sort |uniq > ST_fasta_uniq
+#Check that this is the expected length (see above for the number of transcripts in the isoseq fasta)
+wc -l ST_fasta_uniq 
+71438 ST_fasta_uniq
+
+#Intersect and write all lines that appear in SR_allTranscripts_isoseqfasta but not in SR_allBLASTtranscripts_uniq
+#Check that the files are sorted (as above)
+#Write the transcript names in the fasta file that isn't in the BLAST file
+diff ST_fasta_uniq ST_BLAST_uniq |grep "<" |sed 's:<\ ::g' > diff_fasta_BLAST_ST 
+wc -l diff_fasta_BLAST_ST 
+2694 diff_fasta_BLAST_ST
+
+#Because we want to extract these headers + the sequence following the name, it's easier to work with the list of transcripts to keep.
+#Find lines in common between files using comm. -1 suppresses lines unique to file 1, and -2 for file 2
+comm -12 ST_BLAST_uniq ST_fasta_uniq > shared_BLAST_fasta_ST
+wc -l shared_BLAST_fasta_ST 
+68744 shared_BLAST_fasta_ST
+
+#Extract sequences from the fasta file: 
+grep -A 1 -f shared_BLAST_fasta_ST ST_isoseq_pbmm2mapped_to_POMST_collapse.fasta > ST_isoseq_pbmm2mapped_to_POMST_collapse_diptera.fasta
+
+#This writes some lines "--" at the end of each extracted transcript. Remove these: 
+sed -i '/--/d' ST_isoseq_pbmm2mapped_to_POMST_collapse_diptera.fasta
+
+```
 
 ###### 2. Tama collapse
 
