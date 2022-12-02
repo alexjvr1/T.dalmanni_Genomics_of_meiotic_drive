@@ -778,7 +778,9 @@ link to Sade's pipeline and paper
 
 # 3. Short Reads
 
-Short read whole genome sequence data was produced for 100 individuals. These data are available on the Short Read Archive (SRA) on NCBI: [LINK]()
+Short read whole genome sequence data was produced for 100 individuals. 
+
+These data are available on the Short Read Archive (SRA) on NCBI: [LINK]()
 
 
 
@@ -789,13 +791,17 @@ Short read whole genome sequence data was produced for 100 individuals. These da
 
 105 samples (100 WGS + 5 negative controls) were mapped to ST and SR respectively using the following pipeline: 
 
-1. Add Read group information: [02b.0_AddRGs_ARRAY1.sh]()
+The following scripts is for ST and for 50 individuals at a time. The scripts were modified to run the other 55 samples, and to run SR independently. 
 
-2. Mark duplicates: [02b.1_MarkDups_ARRAY1.sh]()
+1. Add Read group information: [02b.0_AddRG_ARRAY.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/02b.0_AddRG_ARRAY.sh)
 
-3. Local realignment: [02b.2_LocalRealignment_ARRAY1.sh]()
+2. Mark duplicates: [02b.1_MarkDups_ARRAY.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/02b.1_MarkDups_ARRAY.sh)
 
-4. Check final bams: [02b.3_ValidateBamFile_ARRAY1.sh]()
+3. Local realignment: [02b.2_LocalRealignment_ARRAY.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/02b.2_LocalRealignment_ARRAY.sh)
+
+4. Check final bams: [02b.3_ValidateBamFile_ARRAY.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/02b.3_ValidateBamFile_ARRAY.sh)
+
+5. Fix mate if necessary: [02b.4_FixMate_ARRAY.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/02b.4_FixMate_ARRAY.sh)
 
 
 
@@ -804,10 +810,14 @@ Short read whole genome sequence data was produced for 100 individuals. These da
 samtools flagstat
 
 
-## 3d. PCA to assign individuals to ST/SR
+## 3d. Call variantes
 
 
-How many were incorrectly assigned before sequencing? 
+
+## 3e. PCA to assign individuals to ST/SR
+
+
+
 
 
 
