@@ -843,6 +843,69 @@ Basic Filter set. Remove:
 Filter script: [04a.1_Filtering_variants_forPCA.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/edit/main/Scripts/ShortRead_Analysis/04a.1_Filtering_variants_forPCA.sh)
 
 
+## 3f. Diversity plots
+
+Calculate Fst, dxy and pi across chromosomes using Simon Martin's scripts. 
+
+#### Step 1: 
+```
+# use git clone to clone the genomics_general github repo
+git clone https://github.com/simonhmartin/genomics_general.git
+```
+
+#### Step 2: 
+```
+# Add genomics_general and the scripts we're intersted in to PATH
+export PATH=/SAN/ugi/StalkieGenomics/ShortRead_Analysis/Mapped/FINISHED/Variant_calling_SR_allsites/genomics_general:$PATH
+export PATH=/SAN/ugi/StalkieGenomics/ShortRead_Analysis/Mapped/FINISHED/Variant_calling_SR_allsites/genomics_general/VCF_processing:$PATH
+
+#Check if this is working
+popgenWindows.py --help
+```
+
+#### Step 3: 
+
+Use the script [05a.1_dxy_pi_Fst.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/05a.1_dxy_pi_Fst.sh) to convert the vcf to geno format (Simon's custom format). 
+
+The script also calculates dxy, pi and Fst in 100kb sliding windows with 25kb steps. This takes ~30 hours to run on the X chromosome (92Mb)
+
+We use a [pop_file](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/spp_for_dxy_pi_fst_calc.txt) to specify the population assignment of each sample.  
+
+
+#### Step 4: 
+
+
+Plot in R
+```
+# load libraries
+library(tidyverse)
+library(ggplot2)
+
+data <- read.csv("SR_div_stats.csv")
+
+#Fst
+pdf("Fst_SR_ST_MappedToSR_allData.pdf")
+ggplot(data, aes(mid, Fst_SR_ST)) + geom_line()
+dev.off()
+
+#dxy
+pdf("Dxy_SR_ST_MappedToSR_allData.pdf")
+ggplot(data, aes(mid, dxy_SR_ST)) + geom_line()
+dev.off()
+
+
+#pi
+# first gather the data
+pi <- data %>%
+  select(mid, contains("pi")) %>%
+  gather(key = "species", value = "pi", -mid)
+
+# then plot it
+pdf("Pi_SR_ST_MappedToSR_allData.pdf")
+ggplot(pi, aes(mid, pi, colour = species)) + geom_line()
+dev.off()
+```
+
 
 # 4. Map Structural variants
 
