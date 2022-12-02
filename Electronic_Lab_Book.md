@@ -583,7 +583,7 @@ node to make sure it runs to completion.
 
 It takes ~3hours using qrsh -l tmem=5G, h_vmem=5G, h_rt=3600
 
-Started 15:17
+
 
 
 Process the output from BLASTn to identify the transcripts that should be removed from the fasta file: 
@@ -810,14 +810,37 @@ The following scripts is for ST and for 50 individuals at a time. The scripts we
 samtools flagstat
 
 
-## 3d. Call variantes
+## 3d. Call variants
+
+Variants were called for all individuals mapped to SR and for all individuals mapped to ST. In this way we can plot dxy and pi relative to the ST genome or relative to the SR genome. 
+
+Call variants using the [03a.1_CallVariants_allsites_AJvR.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/03a.1_CallVariants_allsites_AJvR.sh) script
+
+We need all sites called for estimates of pi and dxy: [03a.2_CallVariants_allsites_AJvR.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/03a.2_CallVariants_allsites_AJvR.sh)
 
 
 
 ## 3e. PCA to assign individuals to ST/SR
 
+We used the variants called in 3d above (variants only) to determine SR/SR assignement and compare to the assignments based on physical assessment before sequencing. 
 
+Basic Filter set. Remove:  
 
+1. All reads with PHRED scores <20
+
+2. Check depth distribution 
+
+3. Filter for min depth of 10x
+
+4. Check missingness distribution (loci and individuals)
+
+5. Remove poorly sequenced loci (<95% genotyping rate)
+
+6. Remove individuals that sequenced poorly (<60% genotyping rate)
+
+7. Remove multi-allelic SNPs
+
+Filter script: [04a.1_Filtering_variants_forPCA.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/edit/main/Scripts/ShortRead_Analysis/04a.1_Filtering_variants_forPCA.sh)
 
 
 
