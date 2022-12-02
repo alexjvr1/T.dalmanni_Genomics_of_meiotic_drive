@@ -4,7 +4,6 @@
 #$ -l tmem=16G #RAM
 #$ -l h_vmem=16G #enforced limit on shell memory usage
 #$ -l h_rt=1:00:00 ##wall time.  
-#$ -l tscratch=10G
 #$ -j y  #concatenates error and output files (with prefix job1)
 #$ -t 1-50
 
@@ -43,9 +42,3 @@ INPUT=$INPUT/${NAME}.realn.bam \
 OUTPUT=$OUTPUT/${NAME}.realn.validatesam \
 MODE=SUMMARY
 
-
-function finish {
-    rm -rf /scratch0/ajansen/$JOB_ID.$SGE_TASK_ID
-}
-
-trap finish EXIT ERR INT TERM
