@@ -1,40 +1,3 @@
-# Filtering short reads
-
-Basic Filter set: 
-
-1. All reads with PHRED scores <20
-
-2. Check depth distribution 
-
-3. Filter for min depth of 10x (preferably, or 6X minimum)
-
-4. Max depth filter (for duplicates)
-
-5. Check missingness distribution (loci and individuals)
-
-6. Remove poorly sequenced loci (<50%)
-
-7. Remove individuals that sequenced poorly (<60% genotyping rate)
-
-8. Remove multi-allelic SNPs
-
-
-Dataset 1: 
-
-Basic filter set
-
-
-Dataset 2: 
-
-For PCA, so minimise missingness. Keep only loci genotyped in 90% of individuals. 
-
-Thin? 
-
-
-## Filtering Script
-
-
-```
 #!/bin/bash
 #$ -S /bin/bash
 #$ -N SR_FilterSNPs  ##job name
@@ -43,6 +6,9 @@ Thin?
 #$ -l h_rt=5:00:00 ##wall time.  
 #$ -j y  #concatenates error and output files (with prefix job1)
 #$ -t 1-3
+
+#Filter for PCA analysis
+#bcf.names is file with one chromosome name per line
 
 
 #Run on working directory
@@ -71,4 +37,3 @@ bcftools filter -Ob -i 'FMT/DP>10 & FMT/GQ>20' {NAME} -o ${NAME}_DP10GQ20.bcf
 vcftools --bcf ${NAME}_DP10GQ20.bcf --missing-indv > ${NAME}_DP10GQ20_missing_indv
 vcftools --bcf ${NAME}_DP10GQ20.bcf --missing-ldepth > ${NAME}_DP10GQ20_missing_site
 
-```
