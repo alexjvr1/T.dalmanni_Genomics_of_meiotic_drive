@@ -51,3 +51,9 @@ java -Xmx4g -Xms4g -Djava.io.tmpdir=/scratch0/$USERNAME/$JOB_ID.$SGE_TASK_ID -ja
 
 #Step 3: Index
 samtools index ${NAME}.realn.bam
+
+function finish {
+    rm -rf /scratch0/$USERNAME/$JOB_ID.$SGE_TASK_ID
+}
+
+trap finish EXIT ERR INT TERM
