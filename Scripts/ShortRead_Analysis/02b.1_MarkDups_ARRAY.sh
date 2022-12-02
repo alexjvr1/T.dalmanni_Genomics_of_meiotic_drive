@@ -33,6 +33,7 @@ TAIL="RG.bam"
 NAME=$(sed "${SGE_TASK_ID}q;d" ST.names1)
 
 
+#Step 1: Mark duplicates
 echo "java -Xmx4g -Xms4g -Djava.io.tmpdir=/scratch0/$USERNAME/$JOB_ID.$SGE_TASK_ID -jar $PICARD MarkDuplicates \
 INPUT=$INPUT/${NAME}.$TAIL \
 OUTPUT=$OUTPUT/${NAME}.rmdup.bam \
@@ -52,6 +53,8 @@ VALIDATION_STRINGENCY=SILENT \
 CREATE_INDEX=true
 
 
+#Step 2: index
+samtools index ${NAME}.rmdup.bam
 
 function finish {
     rm -rf /scratch0/$USERNAME/$JOB_ID.$SGE_TASK_ID
