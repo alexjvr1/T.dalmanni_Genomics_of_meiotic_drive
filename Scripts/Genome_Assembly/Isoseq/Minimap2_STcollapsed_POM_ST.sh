@@ -23,8 +23,8 @@ FASTA=$SHAREDPATH/Blobtools_STgenome/shared_BLAST_fasta_ST
 minimap2 -x splice $STREF $FASTA -a -o ST_isoseq_BLASTshared.sam
 
 
-#Step2: sort and index
+#Step2: sort
 
-samtools sort -o ST_isoseq_BLASTshared.sorted.bam ST_isoseq_BLASTshared.sam
+samtools sort -o ST_isoseq_BLASTshared.sorted.sam ST_isoseq_BLASTshared.sam
 
-samtools index ST_isoseq_BLASTshared.sorted.bam
+
