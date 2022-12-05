@@ -858,7 +858,7 @@ Use this script: [Minimap2_STcollapsed_POM_ST.sh](https://github.com/alexjvr1/T.
 
 And modify for SR. 
 
-These run extremely quickly and can be run in the interactive node. 
+These run in 5-7 minutes on the server. 
 
 Minimap log for ST [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/minimap2_ST_BLASTcollapsed.log) 
 
@@ -893,10 +893,12 @@ except ImportError:
   from io import StringIO ## for Python 3
 ```
 
+And run the scripts:
 
 [tama_SR.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/tama_SR.sh)
 
 [tama_ST.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/tama_ST.sh)
+
 
 
 
