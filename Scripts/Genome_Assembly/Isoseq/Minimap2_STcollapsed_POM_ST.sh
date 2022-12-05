@@ -11,7 +11,7 @@ cd $SGE_O_WORKDIR
 
 
 #Software
-export PATH=/share/apps/genomics/minimap2/minimap2:$PATH
+export PATH=/share/apps/genomics/minimap2:$PATH
 export PATH=/share/apps/genomics/samtools-1.16.1/bin:$PATH
 
 #Define variables
