@@ -1,10 +1,18 @@
-[M::mm_idx_gen::24.990*1.41] collected minimizers
-[M::mm_idx_gen::31.090*1.71] sorted minimizers
-[M::main::31.090*1.71] loaded/built the index for 983 target sequence(s)
-[M::mm_mapopt_update::33.082*1.67] mid_occ = 237
+[M::mm_idx_gen::21.729*1.35] collected minimizers
+[M::mm_idx_gen::28.419*1.71] sorted minimizers
+[M::main::28.420*1.71] loaded/built the index for 983 target sequence(s)
+[M::mm_mapopt_update::30.649*1.66] mid_occ = 237
 [M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 983
-[M::mm_idx_stat::34.293*1.65] distinct minimizers: 64452362 (65.02% are singletons); average occurrences: 2.388; average spacing: 2.929
-[M::worker_pipeline::34.502*1.64] mapped 68744 sequences
+[M::mm_idx_stat::31.730*1.64] distinct minimizers: 64452362 (65.02% are singletons); average occurrences: 2.388; average spacing: 2.929
+[M::worker_pipeline::407.902*2.84] mapped 68744 sequences
 [M::main] Version: 2.17-r954-dirty
-[M::main] CMD: minimap2 -x splice -a -o ST_isoseq_BLASTshared.sam /SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/ST_FINAL.fa /SAN/ugi/StalkieGenomics/Blobtools_STgenome/shared_BLAST_fasta_ST
-[M::main] Real time: 34.657 sec; CPU: 56.671 sec; Peak RSS: 4.728 GB
+[M::main] CMD: minimap2 -x splice -a -o ST_isoseq_BLASTshared.sam /SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/ST_FINAL.fa /SAN/ugi/StalkieGenomics/Blobtools_STgenome/ST_shared.fasta
+[M::main] Real time: 408.195 sec; CPU: 1157.757 sec; Peak RSS: 7.093 GB
+
+real	6m49.457s
+user	18m25.096s
+sys	0m53.139s
+
+real	0m1.457s
+user	0m0.452s
+sys	0m0.285s
