@@ -665,10 +665,15 @@ wc -l shared_BLAST_fasta_SR
 58369 shared_BLAST_fasta_SR
 
 #Extract sequences from the fasta file: 
-grep -A 1 -f shared_BLAST_fasta_SR SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta > SR_isoseq_pbmm2mapped_to_POMSR_collapse_diptera.fasta
+#Extract sequences from fasta file: 
+#First we need the lines to look exactly the same, so we need to add ">"
+sed -i 's:^PB:>PB:' shared_BLAST_fasta_SR
 
-#This writes some lines "--" at the end of each extracted transcript. Remove these: 
-sed -i '/--/d' SR_isoseq_pbmm2mapped_to_POMSR_collapse_diptera.fasta
+#Then we can extract the transcript name and the following line (getline):
+awk 'NR==FNR{f1[$1]=$1; next}$1 in f1{print f1[$1]; getline; print}' shared_BLAST_fasta_SR SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta > SR_shared.fasta
+
+##The following grep line works for small files (smaller than ~200 queries), but then runs out of memory even when submitted to the server. I also tried to split the file into 100 different queries (500-600 queries per file), but several errors arose with query and output sequences of uneven length and corrupted query files (partial isoform names, etc). 
+#grep -A 1 -f shared_BLAST_fasta_SR SR_isoseq_pbmm2mapped_to_POMSR_collapse.fasta > SR_isoseq_pbmm2mapped_to_POMSR_collapse_diptera.fasta
 
 ```
 
@@ -755,11 +760,24 @@ comm -12 ST_BLAST_uniq ST_fasta_uniq > shared_BLAST_fasta_ST
 wc -l shared_BLAST_fasta_ST 
 68744 shared_BLAST_fasta_ST
 
-#Extract sequences from the fasta file: 
-grep -A 1 -f shared_BLAST_fasta_ST ST_isoseq_pbmm2mapped_to_POMST_collapse.fasta > ST_isoseq_pbmm2mapped_to_POMST_collapse_diptera.fasta
+#Extract sequences from fasta file: 
+#First we need the lines to look exactly the same, so we need to add ">"
+sed -i 's:^PB:>PB:' shared_BLAST_fasta_ST
 
-#This writes some lines "--" at the end of each extracted transcript. Remove these: 
-sed -i '/--/d' ST_isoseq_pbmm2mapped_to_POMST_collapse_diptera.fasta
+#Then we can extract the transcript name and the following line (getline):
+awk 'NR==FNR{f1[$1]=$1; next}$1 in f1{print f1[$1]; getline; print}' shared_BLAST_fasta_ST ST_isoseq_pbmm2mapped_to_POMST_collapse.fasta > ST_shared.fasta
+
+#Check that this is the right length: 
+grep ">" ST_shared.fasta |wc -l
+68744
+
+#and looks correct
+head ST_shared.fasta
+
+#grep alternative: Extract sequences from the fasta file: 
+##See above why I'm using the awk command instead
+#grep -A 1 -f shared_BLAST_fasta_ST ST_isoseq_pbmm2mapped_to_POMST_collapse.fasta > ST_isoseq_pbmm2mapped_to_POMST_collapse_diptera.fasta
+
 
 ```
 
