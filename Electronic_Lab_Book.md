@@ -479,11 +479,73 @@ Final positions on each reference genome
 
 ### Data processing
 
-Isoseq data was generated from pools 
+#### Samples
+
+```
+#Sample1: SR
+For SR (there is a pile of SR homozygotes, and I assume that there are SR/Y males)
+1. 3 adult SR hom females
+2. 3 adult SR/Y males
+3. 6 unknown sex late stage larvae that should contain SR/Y males***
+
+
+#Sample2: ST
+For ST
+1. 3 adult males
+2. 3 adult females
+3. 6 late stage larvae (probably should avoid pupae)
+
+
+** adults are young flies in good condition
+*** We produce SR/Y larvae from the cross SR/SR female x wildtype male - half are SR/Y and half are SR/X
+
+```
+
+#### Sequencing and isoseq3 
 
 Initially, the isoseq3 pipeline was run with default settings via the University of Liverpool Sequencing facility up to the final polishing step. 
 
-The data received from Liverpool that we will use. These were created using the isoseq3 pipeline to the step just before collapsing: 
+```
+28/06/2022
+CGR LIMS27752 Update
+Lenzi, Luca <L.Lenzi@liverpool.ac.uk>
+⚠ Caution: External sender
+
+
+Hi Helen and all,
+
+I moved all the results at the following link:
+https://cgr.liv.ac.uk/pbio/LIMS27752IsoSeq_08ebf325e8366c31/
+
+The folder 'RAW' contains the raw data obtained form the SMRTlink application.
+
+The folder REPORTS contain the reports for each cell obtained form the SMRTlink application.
+
+The folder "ISOFORMS" contains the results for the IsoSeq pipleine run via the SMRTlink app.
+
+The 'IsoSeq' folder includes the results for the pipeline I run manually, you will be find a folder for each sample, each containing 3 files:
+
+'Sample1.polished.hq.fasta.gz' is the result of the IsoSeq3 pipeline run after selecting for cells with quality above or equal 90. 
+
+'Sample1.collapsed.fasta' contains the Isoforms obtained by collapsing the above using the IsoSeq3 'collapse' function. This function performs the collapsing of the isoforms on the bases of their mapping location (which I obtained by aligning them onto the reference in my previous email.) 
+
+'Sample1_collapsed_cdhit.0.97.fasta.gzip' is the result of further collapsing the isoform purely on similarity by using cd-hit-est, with a similarity thresholds of 97% or above (however included a minimum length for the match to be valid to avoid spurious collapsing).
+
+In any case where possible I also included the sorted and aligned files, for your conveniences.
+
+
+Please let me know for any query you may have.
+
+Best wishes,
+
+Luca
+```
+
+The above were aligned to the publically available genome from the Wilkinson lab for the "collapse" step in isoseq3. 
+
+To keep our analysis consistent, we will use the files generated using the isoseq3 pipeline to the step just before collapsing and redo the collapse step using our genome assemblies. 
+
+Input files to start with:  
 ```
 Sample1.polished.hq.bam
 Sample2.polished.hq.bam
@@ -804,6 +866,32 @@ Minimap log for SR [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_mei
 
 
 ###### 2.2 Tama collapse
+
+Install Tama following the instructions [here](https://github.com/GenomeRIK/tama/wiki)
+
+Make sure biopython and pysam are installed: 
+```
+export PATH=/share/apps/python-3.10.0-shared/bin:$PATH
+export LD_LIBRARY_PATH=/share/apps/python-3.10.0-shared/lib:$LD_LIBRARY_PATH
+
+#make sure biopython and pysam are installed
+
+python -c "import biopython"
+python -c "import pysam"
+
+#if not available, import
+pip install biopython
+pip install pysam
+```
+
+Edit tama_collapse.py
+```
+#There's been a change in the naming system for the StringIO module. Tama assumes python2, but if python3 is being used we need to add the third line to the script: 
+
+  from StringIO import StringIO ## for Python 2
+except ImportError:
+  from io import StringIO ## for Python 3
+```
 
 
 [tama_SR.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/tama_SR.sh)
