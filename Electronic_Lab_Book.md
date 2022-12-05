@@ -781,7 +781,32 @@ head ST_shared.fasta
 
 ```
 
-###### 2. Tama collapse
+##### 2. Tama collapse
+
+1. Map isoseq reads to reference genome using a long read and splice-aware mapper (e.g., Minimap2)
+
+2. Collapse reads using tama collapse
+
+
+###### 2.1 Map isoseq to reference genome
+
+We'll use minimap2 as it is the most efficient. Files should be sorted and indexed after with samtools (see script). 
+
+Use this script: [Minimap2_STcollapsed_POM_ST.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/Minimap2_STcollapsed_POM_ST.sh)
+
+And modify for SR. 
+
+These run extremely quickly and can be run in the interactive node. 
+
+Minimap log for ST [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/minimap2_ST_BLASTcollapsed.log) 
+
+Minimap log for SR [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/minimap2_SR_BLASTcollapsed.log)
+
+
+###### 2.2 Tama collapse
+
+
+
 
 
 ### Pipeline
