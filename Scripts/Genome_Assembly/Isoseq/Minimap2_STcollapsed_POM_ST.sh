@@ -3,7 +3,7 @@
 #$ -N ST_isoseq_minimap2  ##job name
 #$ -l tmem=16G #RAM
 #$ -l h_vmem=16G #enforced limit on shell memory usage
-#$ -l h_rt=1:00:00 ##wall time.
+#$ -l h_rt=10:00:00 ##wall time.
 #$ -j y  #concatenates error and output files (with prefix job1)
 
 #Run on working directory
@@ -17,14 +17,14 @@ export PATH=/share/apps/genomics/samtools-1.16.1/bin:$PATH
 #Define variables
 SHAREDPATH=/SAN/ugi/StalkieGenomics
 STREF=$SHAREDPATH/RefGenome/POM_genomes/ST_FINAL.fa
-FASTA=$SHAREDPATH/Blobtools_STgenome/shared_BLAST_fasta_ST
+FASTA=$SHAREDPATH/Blobtools_STgenome/ST_shared.fasta
 
 #Step1: Mapping
-minimap2 -x splice $STREF $FASTA -a -o ST_isoseq_BLASTshared.sam
+time minimap2 -x splice $STREF $FASTA -a -o ST_isoseq_BLASTshared.sam
 
 
 #Step2: sort
 
-samtools sort -o ST_isoseq_BLASTshared.sorted.sam ST_isoseq_BLASTshared.sam
+time samtools sort -o ST_isoseq_BLASTshared.sorted.sam ST_isoseq_BLASTshared.sam
 
 
