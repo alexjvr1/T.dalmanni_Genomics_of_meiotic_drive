@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -N tama_ST  ##job name
-#$ -l tmem=32G #RAM
-#$ -l h_vmem=32G #enforced limit on shell memory usage
-#$ -l h_rt=10:00:00 ##wall time.
+#$ -l tmem=16G #RAM
+#$ -l h_vmem=16G #enforced limit on shell memory usage
+#$ -l h_rt=1:00:00 ##wall time.
 #$ -j y  #concatenates error and output files (with prefix job1)
 
 #Run on working directory
