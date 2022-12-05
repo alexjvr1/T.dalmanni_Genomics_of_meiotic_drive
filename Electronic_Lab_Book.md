@@ -900,6 +900,33 @@ And run the scripts:
 [tama_ST.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/tama_ST.sh)
 
 
+This takes ~5minutes to run on the server
+
+Final collapsed read numbers: 
+```
+Previous step: 58369
+56730 SR_tamacollapsed.bed
+
+Previous step: 68744
+66428 ST_tamacollapsed.bed
+```
+
+
+###### 2.3 Extract fasta and assess with BUSCO
+
+Tama collapse produces a bed file that can be used to extract the final transcripts: 
+
+```
+
+
+```
+
+
+And assess with BUSCO using these scripts: 
+
+[SR_isoSeq_collapsed_56730_BUSCO.sh]()
+
+[ST_isoSeq_collapsed_68744_BUSCO.sh]()
 
 
 
