@@ -790,7 +790,7 @@ head ST_shared.fasta
 
 ###### 2.1 Map isoseq to reference genome
 
-We'll use minimap2 as it is the most efficient. Files should be sorted and indexed after with samtools (see script). 
+We'll use minimap2 as it is the most efficient. Tama expects sorted sam files by default (see scripts). 
 
 Use this script: [Minimap2_STcollapsed_POM_ST.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/Minimap2_STcollapsed_POM_ST.sh)
 
@@ -805,6 +805,10 @@ Minimap log for SR [here](https://github.com/alexjvr1/T.dalmanni_Genomics_of_mei
 
 ###### 2.2 Tama collapse
 
+
+[tama_SR.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/tama_SR.sh)
+
+[tama_ST.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/tama_ST.sh)
 
 
 
