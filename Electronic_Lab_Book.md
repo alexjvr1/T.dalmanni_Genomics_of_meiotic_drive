@@ -929,7 +929,7 @@ And assess with BUSCO using these scripts:
 
 
 
-### Pipeline
+### Annotation Pipeline
 
 link to Sade's pipeline and paper
 
@@ -947,14 +947,11 @@ These data are available on the Short Read Archive (SRA) on NCBI: [LINK]()
 
 
 
-## 3a. Assess raw data
+## 3a. Map to ST and SR genomes
 
+105 samples (100 WGS + 5 negative controls) were mapped to ST and SR respectively. 
 
-## 3b. Map to ST and SR genomes
-
-105 samples (100 WGS + 5 negative controls) were mapped to ST and SR respectively using the following pipeline: 
-
-The following scripts is for ST and for 50 individuals at a time. The scripts were modified to run the other 55 samples, and to run SR independently. 
+The following scripts is for ST and for 50 individuals at a time. The scripts were modified to run the other 55 samples, and to run SR independently. The following pipeline was used for both: 
 
 1. Add Read group information: [02b.0_AddRG_ARRAY.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/02b.0_AddRG_ARRAY.sh)
 
@@ -968,12 +965,7 @@ The following scripts is for ST and for 50 individuals at a time. The scripts we
 
 
 
-## 3c. Assess mapping
-
-samtools flagstat
-
-
-## 3d. Call variants
+## 3b. Call variants
 
 Variants were called for all individuals mapped to SR and for all individuals mapped to ST. In this way we can plot dxy and pi relative to the ST genome or relative to the SR genome. 
 
@@ -982,10 +974,7 @@ Call variants using the [03a.1_CallVariants_allsites_AJvR.sh](https://github.com
 We need all sites called for estimates of pi and dxy: [03a.2_CallVariants_allsites_AJvR.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/03a.2_CallVariants_allsites_AJvR.sh)
 
 
-
-## 3e. PCA to assign individuals to ST/SR
-
-We used the variants called in 3d above (variants only) to determine SR/SR assignement and compare to the assignments based on physical assessment before sequencing. 
+## 3c. Filter variants
 
 Basic Filter set. Remove:  
 
@@ -1004,6 +993,138 @@ Basic Filter set. Remove:
 7. Remove multi-allelic SNPs
 
 Filter script: [04a.1_Filtering_variants_forPCA.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/edit/main/Scripts/ShortRead_Analysis/04a.1_Filtering_variants_forPCA.sh)
+
+
+
+### The final datasets: 
+
+Mapped_to_SR_VariantsOnly_BasicFilters.vcf
+
+Mapped_to_SR_VariantsOnly_StrictFilters_forPCA.vcf
+
+Mapped_to_SR_AllSites_BasicFilters.vcf
+
+Mapped_to_ST_AllSites_BasicFilters.vcf
+
+
+
+
+## 3d. PCA to assign individuals to ST/SR
+
+We used the variants called above (Mapped_to_SR_VariantsOnly_StrictFilters_forPCA.vcf) to determine SR/SR assignment and compare to the assignments based on genetic markers used before sequencing. 
+
+
+
+1. Use PLINK2 to prune for linkage
+
+```
+export PATH=/share/apps/genomics/plink-2.0/bin:$PATH
+
+VCF=Mapped_to_SR_VariantsOnly_StrictFilters_forPCA.vcf
+
+#Identify loci that should be pruned for linkage
+plink2 --vcf $VCF --double-id --allow-extra-chr \
+--set-missing-var-ids @:# \
+--indep-pairwise 50 10 0.1 --out ForPCA
+```
+
+
+2. PCA excluding linked loci identified above
+
+```
+plink2 --vcf $VCF --double-id --allow-extra-chr --set-missing-var-ids @:# \
+--extract ForPCA.prune.in \
+--make-bed --pca --out Tdal_PCA
+```
+
+3. Plot the PCA
+
+```
+#R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+#Copyright (C) 2022 The R Foundation for Statistical Computing
+#Platform: x86_64-apple-darwin17.0 (64-bit)
+
+library(tidyverse)
+library(ggplot2)
+
+eigenval <- read.table("SR_X_PCA.eigenval", col_names=F)  #read in eigenvalues
+pca <- read_table("SR_X_PCA.eigenvec", col_names = T)  #read in eigenvectors
+
+pca <- pca[,-1]  #remove the unnecessary column
+
+#read in file with sample ID and predicted genotype 
+spp <- read.table("Genotype.names", header=T)
+head(spp)
+SampleName	genotype
+Sample2	ST
+Sample3	ST
+Sample4	SR
+Sample5	SR
+Sample6	SR
+Sample7	ST
+Sample8	ST
+Sample9	ST
+Sample10	SR
+
+#set genotypes in pca dataframe
+
+pca$spp <- spp$genotype
+
+#Calculate the % variance explained (PVE)
+pve <- data.frame(PC = 1:10, pve = eigenval/sum(eigenval)*100)
+
+#Plot to see the variance explained by each eigenfactor: 
+a <- ggplot(pve, aes(PC, pve)) + geom_bar(stat = "identity")
+a + ylab("Percentage variance explained") + theme_light()
+```
+
+
+![alt_txt][PCA_eigenvalues]
+
+[PCA_eigenvalues]:https://user-images.githubusercontent.com/12142475/205868236-ab2477e5-e044-4ec7-a782-755657eabe14.png
+
+
+This looks promising - we expect that PC1 will explain the difference between ST and SR and it looks like PC1 explains a huge amount of variance. 
+
+```
+#Plot the PCA
+b <- ggplot(pca, aes(PC1, PC2, col = spp)) + geom_point(size = 3)
+b <- b + scale_colour_manual(values = c("green", "blue", "black")) #we have three genotype catagories: SR, ST, and unknown
+b + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))
+```
+
+![alt_txt][PCA]
+
+[PCA]:https://user-images.githubusercontent.com/12142475/205869103-178d6637-21ed-4e3f-b0f0-72ac2cf6b7f0.png
+
+
+
+Mis-assigned samples: 
+
+|SampleNr	|Tube label	|Sample name	|collection.year	|stream	|lek	|genotype	|sex	|PCA.genotype|
+|:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:|
+|4	|BW29_MA	|BW60_M_A_09	|2009	|BW	|BW60	|SR	|M|	ST|
+|16	|UBW32_MC	|UBW74_M_C_09	|2009	|UBW	|UBW74	|SR	|M|	ST|
+|33	|P9_MA	|P19_M_A_10	|2010	|P	|P19	|SR	|M	|ST|
+|83	|T22_M1	|T22_M1	2017	|T	|T22	|SR	|M	|ST|
+|84	|T23_M1	|T23_M1	2017	|T	|T23	|ST	|M	|SR|
+
+The two errant ST samples: 
+|SampleNr	|Tube label	|Sample name	|collection.year	|stream	|lek	|genotype	|sex	|PCA.genotype|
+|:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:|
+|7|	Q10_MA	|Q36_M_A_09	|2009	|Q	|Q36	|ST	|M	|ST|
+|35|	Q10_MA	|Q59_M_A_10	|2010	|Q	|Q59	|ST	|M	|ST|
+
+The intermediate ST
+|SampleNr	|Tube label	|Sample name	|collection.year	|stream	|lek	|genotype	|sex	|PCA.genotype|
+|:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:|
+|88	|T7_M1	|T7_M1	|2017	|T	|T7	|ST	|M	| midway between|
+
+Unknown sample
+|SampleNr	|Tube label	|Sample name	|collection.year	|stream	|lek	|genotype	|sex	|PCA.genotype|
+|:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:||:-------------:|
+|100	|Quarry 37	|Quarry 37|		Quarry 37 |M| A|unknown	|Quarry 37 Male A|Assigned ST by PCA|
+
 
 
 ## 3f. Diversity plots
