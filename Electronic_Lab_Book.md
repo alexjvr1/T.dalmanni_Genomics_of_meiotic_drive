@@ -1004,7 +1004,19 @@ And assess with BUSCO using these scripts:
 
 [BUSCO_SR_FINAL.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_SR_FINAL.sh)
 
+[SR_output](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/BUSCO_SR_FINAL_IsoSeq_shortsummary.md)
+
 [BUSCO_ST_FINAL.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_ST_FINAL.sh)
+
+[ST_output](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/BUSCO_ST_FINAL_IsoSeq_shortsummary.md)
+
+```
+###SR
+C:77.5%[S:19.1%,D:58.4%],F:6.1%,M:16.4%,n:3285
+
+###ST
+C:86.4%[S:18.1%,D:68.3%],F:0.9%,M:12.7%,n:3285
+```
 
 
 
