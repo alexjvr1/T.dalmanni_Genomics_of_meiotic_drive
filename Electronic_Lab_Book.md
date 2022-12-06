@@ -503,8 +503,11 @@ For ST
 
 #### Sequencing and isoseq3 
 
+
+
 Initially, the isoseq3 pipeline was run with default settings via the University of Liverpool Sequencing facility up to the final polishing step. 
 
+The standard isoseq library protocol was used - i.e., no 5' cap selection (see email from Luca Lenzi on 6 Dec 2022). 
 ```
 28/06/2022
 CGR LIMS27752 Update
@@ -900,10 +903,27 @@ And run the scripts:
 
 This takes ~5minutes to run on the server
 
-Final collapsed read numbers: 
+The scripts run three different settings for Tama collapse - settings recommended by the authors, a more stringent and a more lenient run. 
+
+To decide which set to choose, we'll look at the number of reads remaining from each run: 
+
+```
+wc -l SR*settings*0.bed
+   55965 SR_tamacollapsed_settings.a100.z30.bed
+   55803 SR_tamacollapsed_settings.a150.z40.bed
+   56072 SR_tamacollapsed_settings.a50.z20.bed
+
+
+wc -l SR*trans_report.txt
+   55966 SR_tamacollapsed_settings.a100.z30_trans_report.txt
+   55804 SR_tamacollapsed_settings.a150.z40_trans_report.txt
+   56073 SR_tamacollapsed_settings.a50.z20_trans_report.txt
+```
+
+There is not much difference in the read numbers. We will choose the settings suggested by the authors: a100.z30
 ```
 Previous step: 58369
-56730 SR_tamacollapsed.bed
+55965 SR_tamacollapsed_settings.a100.z30.bed
 
 Previous step: 68744
 66428 ST_tamacollapsed.bed
@@ -915,15 +935,29 @@ Previous step: 68744
 Tama collapse produces a bed file that can be used to extract the final transcripts: 
 
 ```
+export PATH=/share/apps/genomics/bedtools-2.30.0/bin:$PATH
+####For SR
+GENOME=/SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/SR_FINAL.fasta
+SRBED=SR_tamacollapsed_settings.a100.z30.bed
+SROUT=Tdal_SR_a100z30_isoseq.fasta
 
+#Extract fasta
+bedtools getfasta -fi $GENOME -bed $SRBED -fo $SROUT -s -name -split; done
 
+####For ST
+GENOME=/SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/ST_FINAL.fa
+SRBED=ST_tamacollapsed_settings.a100.z30.bed
+SROUT=Tdal_ST_a100z30_isoseq.fasta
+
+#Extract fasta
+bedtools getfasta -fi $GENOME -bed $SRBED -fo $SROUT -s -name -split; done
 
 ```
 
 
 And assess with BUSCO using these scripts: 
 
-[SR_isoSeq_collapsed_56730_BUSCO.sh]()
+[SR_isoSeq_collapsed_55965_BUSCO.sh]()
 
 [ST_isoSeq_collapsed_68744_BUSCO.sh]()
 
