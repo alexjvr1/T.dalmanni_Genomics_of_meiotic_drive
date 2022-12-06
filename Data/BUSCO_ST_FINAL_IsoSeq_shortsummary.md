@@ -1,7 +1,7 @@
-# BUSCO version is: 5.2.2 
-# The lineage dataset is: diptera_odb10 (Creation date: 2020-08-05, number of genomes: 56, number of BUSCOs: 3285)
-# Summarized benchmarking in BUSCO notation for file /SAN/ugi/StalkieGenomics/RefGenome/Tdal_SR_a100z30_isoseq.fasta
-# BUSCO was run in mode: transcriptome
+#BUSCO version is: 5.2.2 
+#The lineage dataset is: diptera_odb10 (Creation date: 2020-08-05, number of genomes: 56, number of BUSCOs: 3285)
+#Summarized benchmarking in BUSCO notation for file /SAN/ugi/StalkieGenomics/RefGenome/Tdal_SR_a100z30_isoseq.fasta
+#BUSCO was run in mode: transcriptome
 
 	***** Results: *****
 
