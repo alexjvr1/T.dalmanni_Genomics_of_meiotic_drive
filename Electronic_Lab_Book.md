@@ -908,6 +908,8 @@ The scripts run three different settings for Tama collapse - settings recommende
 To decide which set to choose, we'll look at the number of reads remaining from each run: 
 
 ```
+####SR
+
 wc -l SR*settings*0.bed
    55965 SR_tamacollapsed_settings.a100.z30.bed
    55803 SR_tamacollapsed_settings.a150.z40.bed
@@ -918,6 +920,20 @@ wc -l SR*trans_report.txt
    55966 SR_tamacollapsed_settings.a100.z30_trans_report.txt
    55804 SR_tamacollapsed_settings.a150.z40_trans_report.txt
    56073 SR_tamacollapsed_settings.a50.z20_trans_report.txt
+   
+   
+####ST
+
+wc -l ST*settings*0.bed
+   65458 ST_tamacollapsed_settings.a100.z30.bed
+   65256 ST_tamacollapsed_settings.a150.z40.bed
+   65612 ST_tamacollapsed_settings.a50.z20.bed
+   
+wc -l ST*trans_report.txt
+   65459 ST_tamacollapsed_settings.a100.z30_trans_report.txt
+   65257 ST_tamacollapsed_settings.a150.z40_trans_report.txt
+   65613 ST_tamacollapsed_settings.a50.z20_trans_report.txt
+
 ```
 
 There is not much difference in the read numbers. We will choose the settings suggested by the authors: a100.z30
@@ -926,7 +942,7 @@ Previous step: 58369
 55965 SR_tamacollapsed_settings.a100.z30.bed
 
 Previous step: 68744
-66428 ST_tamacollapsed.bed
+65459 ST_tamacollapsed_settings.a100.z30.bed
 ```
 
 
@@ -942,24 +958,24 @@ SRBED=SR_tamacollapsed_settings.a100.z30.bed
 SROUT=Tdal_SR_a100z30_isoseq.fasta
 
 #Extract fasta
-bedtools getfasta -fi $GENOME -bed $SRBED -fo $SROUT -s -name -split; done
+bedtools getfasta -fi $GENOME -bed $SRBED -fo $SROUT -s -name -split
 
 ####For ST
 GENOME=/SAN/ugi/StalkieGenomics/RefGenome/POM_genomes/ST_FINAL.fa
-SRBED=ST_tamacollapsed_settings.a100.z30.bed
-SROUT=Tdal_ST_a100z30_isoseq.fasta
+STBED=ST_tamacollapsed_settings.a100.z30.bed
+STOUT=Tdal_ST_a100z30_isoseq.fasta
 
 #Extract fasta
-bedtools getfasta -fi $GENOME -bed $SRBED -fo $SROUT -s -name -split; done
+bedtools getfasta -fi $GENOME -bed $STBED -fo $STOUT -s -name -split
 
 ```
 
 
 And assess with BUSCO using these scripts: 
 
-[SR_isoSeq_collapsed_55965_BUSCO.sh]()
+[BUSCO_SR_FINAL.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_SR_FINAL.sh)
 
-[ST_isoSeq_collapsed_68744_BUSCO.sh]()
+[BUSCO_ST_FINAL.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_ST_FINAL.sh)
 
 
 
