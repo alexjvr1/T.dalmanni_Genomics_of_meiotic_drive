@@ -992,7 +992,17 @@ Basic Filter set. Remove:
 
 7. Remove multi-allelic SNPs
 
-Filter script: [04a.1_Filtering_variants_forPCA.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/edit/main/Scripts/ShortRead_Analysis/04a.1_Filtering_variants_forPCA.sh)
+#### 1. Identify individuals to remove
+
+
+#### 2. Identify max and min depth thresholds
+
+
+#### 3. Scripts: 
+
+General filtering script: [04a.2_FilteringVariants_Allsites.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/04a.2_FilteringVariants_Allsites.sh)
+
+Filter script for PCA: [04a.1_Filtering_variants_forPCA.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/edit/main/Scripts/ShortRead_Analysis/04a.1_Filtering_variants_forPCA.sh)
 
 
 
