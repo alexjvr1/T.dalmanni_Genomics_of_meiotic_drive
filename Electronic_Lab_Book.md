@@ -1106,8 +1106,8 @@ Mis-assigned samples:
 |4	|BW29_MA	|BW60_M_A_09	|2009	|BW	|BW60	|SR	|M|	ST|
 |16	|UBW32_MC	|UBW74_M_C_09	|2009	|UBW	|UBW74	|SR	|M|	ST|
 |33	|P9_MA	|P19_M_A_10	|2010	|P	|P19	|SR	|M	|ST|
-|83	|T22_M1	|T22_M1	2017	|T	|T22	|SR	|M	|ST|
-|84	|T23_M1	|T23_M1	2017	|T	|T23	|ST	|M	|SR|
+|83	|T22_M1	|T22_M1	|2017	|T	|T22	|SR	|M	|ST|
+|84	|T23_M1	|T23_M1	|2017	|T	|T23	|ST	|M	|SR|
 
 The two errant ST samples: 
 |SampleNr	|Tube label	|Sample name	|collection.year	|stream	|lek	|genotype	|sex	|PCA.genotype|
