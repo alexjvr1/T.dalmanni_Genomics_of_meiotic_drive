@@ -628,9 +628,7 @@ A big improvement, even on my previous attempt to run tama collapse on the isose
 
 1. BLAST to Diptera and remove all non dipteran sequences. 
 
-2. cd-est collapse (used by Liverpool)
-
-3. Tama collapse
+2. Tama collapse
 
 
 
