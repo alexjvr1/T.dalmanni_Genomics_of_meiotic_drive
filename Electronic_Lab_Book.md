@@ -560,12 +560,22 @@ We ran a BUSCO analysis of each of these:
 
 [BUSCO_SR1.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_SR1.sh)
 
+These took ~9 hours to run
+
 
 Initial BUSCO scores of these data: 
 ```
+##SR:
+After initial isoseq3 pipeline run in Liverpool: 
+114650 isoseq reads
 
+C:87.8%[S:12.1%,D:75.7%],F:0.8%,M:11.4%,n:3285
 
+##ST:
+After initial isoseq3 pipeline run in Liverpool:  
+167891 isoseq reads
 
+C:87.9%[S:12.3%,D:75.6%],F:1.0%,M:11.1%,n:3285
 ```
 
 Full reports here: 
