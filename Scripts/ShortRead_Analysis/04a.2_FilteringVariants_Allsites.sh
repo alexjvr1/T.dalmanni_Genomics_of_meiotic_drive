@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -S /bin/bash
-#$ -N SRfilter  ##job name
+#$ -N STfilter  ##job name
 #$ -l tmem=16G #RAM
 #$ -l h_vmem=16G #enforced limit on shell memory usage
 #$ -l h_rt=10:00:00 ##wall time.  
