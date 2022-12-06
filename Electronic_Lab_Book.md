@@ -554,6 +554,25 @@ Sample1.polished.hq.bam
 Sample2.polished.hq.bam
 ```
 
+We ran a BUSCO analysis of each of these: 
+
+[BUSCO_ST1.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_ST1.sh)
+
+[BUSCO_SR1.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/Genome_Assembly/Isoseq/BUSCO_SR1.sh)
+
+
+Initial BUSCO scores of these data: 
+```
+
+
+
+```
+
+Full reports here: 
+
+[BUSCO_ST1.shortsummary.txt](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/BUSCO_ST1.shortsummary.txt)
+[BUSCO_SR1.shortsummary.txt](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Data/BUSCO_SR1.shortsummary.txt)
+
 
 Install isoseq3 to run the collapse step. This was previously run by Liverpool using the Wilkinson v2 genome, but we want to rerun the step using our genomes. 
 
