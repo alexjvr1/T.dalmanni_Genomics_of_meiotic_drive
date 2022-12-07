@@ -1086,16 +1086,85 @@ Basic Filter set. Remove:
 #### 1. Identify individuals to remove
 
 
-#### 2. Identify max and min depth thresholds
 
-
-#### 3. Scripts: 
+#### 2. Scripts: 
 
 General filtering script: [04a.2_FilteringVariants_Allsites.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/04a.2_FilteringVariants_Allsites.sh)
 
 Filter script for PCA: [04a.1_Filtering_variants_forPCA.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/edit/main/Scripts/ShortRead_Analysis/04a.1_Filtering_variants_forPCA.sh)
 
 
+#### 3. Identify max and min depth thresholds and filter for depth
+
+Mean depth can be estimated using vcftools --depth
+```
+
+```
+
+
+Filter based on a min-mean depth of 10X, and a max-mean depth of the mean depth + 2xSD in depth. Here we're using 10x and 20x as thresholds. 
+
+Estimate how many loci will remain after these filters: 
+```
+
+
+```
+
+
+Script to filter per chromosome: 
+
+[]()
+
+
+How many loci do we have left per chromosome? 
+```
+for i in $(ls *maxDP20.recode.vcf); do vcftools --vcf $i; done
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf Chr1_allsites.bcf.s3_n83_2alleles_maxmiss0.9_minDP10_maxDP20.recode.vcf
+
+After filtering, kept 83 out of 83 Individuals
+After filtering, kept 4176740 out of a possible 4176740 Sites
+Run Time = 145.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf Chr2_allsites.bcf.s3_n83_2alleles_maxmiss0.9_minDP10_maxDP20.recode.vcf
+
+After filtering, kept 83 out of 83 Individuals
+After filtering, kept 4176513 out of a possible 4176513 Sites
+Run Time = 144.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf ChrX_allsites.bcf.s3_n83_2alleles_maxmiss0.9_minDP10_maxDP20.recode.vcf
+
+After filtering, kept 83 out of 83 Individuals
+After filtering, kept 229653 out of a possible 229653 Sites
+Run Time = 9.00 seconds
+```
+
+What is the locus density (assuming an even distribution of SNPs across the chromosomes)
+```
+#Chr 1 = 143175544
+#Nr sites with data = 4176740
+#Data density = 1 locus/34 bp
+
+#Chr 2 = 151213794
+#Nr sites with data = 4176513
+#Data density = 1 locus/36 bp
+
+#Chr X = 100414845
+#Nr sites with data = 229653
+#Data density = 1 locus/437 bp
+```
 
 ### The final datasets: 
 
