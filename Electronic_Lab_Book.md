@@ -1087,6 +1087,9 @@ Basic Filter set. Remove:
 
 
 
+**NB: Sample080 was successfully mapped to the SR genome, but timed out when mapping against ST. Sample061 mapped against ST, but not against SR. This is an issue with the script timing (>48 hours of mapping time) rather than necessarily a biological incompatibility.**
+
+
 #### 2. Scripts: 
 
 General filtering script: [04a.2_FilteringVariants_Allsites.sh](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Scripts/ShortRead_Analysis/04a.2_FilteringVariants_Allsites.sh)
