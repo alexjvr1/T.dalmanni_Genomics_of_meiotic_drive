@@ -1366,15 +1366,25 @@ dev.off()
 
 # 4. Map Structural variants
 
-Pipeline
+Pipeline: 
 
-## Alignment
+1. Align POM SR long reads to POM ST reference genome
+
+2. Run Sniffles to assign inversion break points
+
+3. Filter
 
 
-## Sniffles
+## 1. Alignment
+
+Long reads are mapped using minimap. We're running each subread separately using these scripts: 
 
 
-## Filtering
+
+## 2. Sniffles
+
+
+## 3. Filtering
 
 
 
