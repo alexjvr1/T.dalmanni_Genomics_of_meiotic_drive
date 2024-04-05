@@ -27,6 +27,12 @@ We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of
 
 ### Quick-run 
 
+Copy this repository to your working directory: 
+```
+git clone 
+```
+
+
 The following provides quick-run scripts to rerun each analysis: 
 
 #### 1. Genome assembly
