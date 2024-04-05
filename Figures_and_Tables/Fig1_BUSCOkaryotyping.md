@@ -10,7 +10,7 @@ BUSCO assessment of all three genomes (D. melanogaster, ST and SR). The two T.da
 
 Create an alignment of BUSCO genes between ST and SR genomes and D. melanogaster
 
-Taken from [BUSCO_karyotyping](https://github.com/swomics/BUSCO_karyotyping) by Sam Whiteford
+Inspired by [BUSCO_karyotyping](https://github.com/swomics/BUSCO_karyotyping) by Sam Whiteford
 
 In BUSCO 5.0.0 there is a bug in formatting for the "Sequence" column where a few loci contain the loci "Sequence:start-end format". Use awk to filter these out. 
 
