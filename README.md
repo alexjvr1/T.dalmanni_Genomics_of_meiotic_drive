@@ -12,30 +12,24 @@ This work was funded by the Natural Environment Research Council (NERC xxx).
 We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of open research. This repository provides a detailed record of our analyses and the decisions we made in this [electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md). 
 
 
-1. [Genome assembly](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#1-genome-assembly)
-    
-    1a. [ST genome assembly]
-    
-    1b. [SR genome assembly]
-    
-2. [Genome annotation]
-
-3. [Short Reads]
-
-4. [Mapping Structural Variants]
-5. [Mapping repeat elements]
 
 ### Quick-run 
 
-Copy this repository to your working directory: 
-```
-git clone 
-```
-
-
 The following provides quick-run scripts to rerun each analysis: 
 
+#### Scripts
+Copy this repository and scripts to your working directory: 
+```
+git clone https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive
+```
+
+
 #### 1. Genome assembly
+
+Data
+```
+
+```
 
 *1a. ST genome assembly script*: 
 ```
@@ -43,6 +37,10 @@ The following provides quick-run scripts to rerun each analysis:
 ```
 [Jump to electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#1a-st-genome-assembly)
 
+Data
+```
+
+```
 
 *1b. SR genome assembly script*:
 ```
@@ -51,6 +49,11 @@ The following provides quick-run scripts to rerun each analysis:
 [Jump to electornic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#1b-sr-genome-assembly)
 
 #### 2. Genome annotation
+
+Data
+```
+
+```
 
 Genome annotation script: 
 ```
@@ -61,6 +64,11 @@ Genome annotation script:
 
 #### 3. Short Reads Analysis
 
+Data
+```
+
+```
+
 Short read analysis script: 
 ```
 
@@ -69,6 +77,11 @@ Short read analysis script:
 
 
 #### 4. Mapping Structural Variants
+
+Data
+```
+
+```
 
 Mapping structural variants scripts
 ```
@@ -80,6 +93,11 @@ Mapping structural variants scripts
 
 #### 5. Mapping repeat elements
 
+Data
+```
+
+```
+
 Mapping repeat elements scripts
 ```
 
@@ -87,7 +105,26 @@ Mapping repeat elements scripts
 [Jump to electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#4-map-repeat-elements)
 
 
-#### 6. Final Circos plot
+#### 6. Figures
+
+##### 6.1 BUSCO alignment
+
+Data
+```
+
+```
+
+Script for plot: 
+```
+
+```
+
+
+##### 6.2 Circos plot
+Data
+```
+
+```
 
 Create the final circos plot
 ```
