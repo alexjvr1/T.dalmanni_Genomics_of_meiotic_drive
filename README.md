@@ -16,5 +16,53 @@ We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of
 
 The following provides quick-run scripts to rerun each analysis: 
 
-#### 
+#### 1. Genome assembly
+
+*1a. ST genome assembly script*: 
+```
+
+```
+Jump to extended explanations in electronic lab book
+
+
+*1b. SR genome assembly script*:
+```
+
+```
+Jump to extended explanations in electronic lab book
+
+#### 2. Genome annotation
+
+Genome annotation script: 
+```
+
+```
+Jump to extended explanations in electronic lab book
+
+
+#### 3. Short Reads Analysis
+
+Short read analysis script: 
+```
+
+```
+Jump to extended explanations in electronic lab book
+
+
+#### 4. Mapping Structural Variants
+
+Mapping structural variants scripts
+```
+
+```
+Jump to extended explanations in electronic lab book
+
+
+#### 5. Mapping repeat elements
+
+Mapping repeat elements scripts
+```
+
+```
+Jump to extended explanations in electronic lab book
 
