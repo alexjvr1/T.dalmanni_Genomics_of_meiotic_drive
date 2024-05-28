@@ -15,7 +15,7 @@ We ascribe to the [FAIR principles](https://www.go-fair.org/fair-principles/) of
 
 ### Quick-run 
 
-The following provides quick-run scripts to rerun each analysis: 
+The following provides quick links to scripts and data to rerun analyses and draw figures: 
 
 #### Scripts
 Copy this repository and scripts to your working directory: 
@@ -28,37 +28,35 @@ git clone https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive
 
 Data
 ```
+#Two runs of HiFi reads:
 
+m64157e_210730_141553.hifi_reads.fastq.gz
+
+m64157e_211024_013127.hifi_reads.fastq.gz
 ```
 
-*1a. ST genome assembly script*: 
-```
+*1a. ST genome assembly process*: 
 
-```
 [Jump to electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#1a-st-genome-assembly)
 
-Data
-```
 
-```
 
-*1b. SR genome assembly script*:
-```
+*1b. SR genome assembly process*:
 
-```
 [Jump to electornic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#1b-sr-genome-assembly)
+
 
 #### 2. Genome annotation
 
 Data
 ```
+Sample1.polished.hq.bam
 
+Sample2.polished.hq.bam
 ```
 
-Genome annotation script: 
-```
+Genome annotation steps: 
 
-```
 [Jump to electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#2-genome-annotation)
 
 
@@ -66,14 +64,18 @@ Genome annotation script:
 
 Data
 ```
-
+#To be submitted to NCBI
 ```
 
-Short read analysis script: 
-```
+Short read analysis steps: 
 
-```
 [Jump to electronic lab book](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3-short-reads)
+
+
+[PCA of short read data:](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3d-pca-to-assign-individuals-to-stsr) 
+
+
+[Diversity estimates - Fst/dxy/pi:](https://github.com/alexjvr1/T.dalmanni_Genomics_of_meiotic_drive/blob/main/Electronic_Lab_Book.md#3f-diversity-plots)
 
 
 #### 4. Mapping Structural Variants
