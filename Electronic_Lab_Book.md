@@ -1099,25 +1099,7 @@ Filter script for PCA: [04a.1_Filtering_variants_forPCA.sh](https://github.com/a
 
 #### 3. Identify max and min depth thresholds and filter for depth
 
-Mean depth can be estimated using vcftools --depth
-```
-
-```
-
-
 Filter based on a min-mean depth of 10X, and a max-mean depth of the mean depth + 2xSD in depth. Here we're using 10x and 20x as thresholds. 
-
-Estimate how many loci will remain after these filters: 
-```
-
-
-```
-
-
-Script to filter per chromosome: 
-
-[]()
-
 
 How many loci do we have left per chromosome? 
 ```
